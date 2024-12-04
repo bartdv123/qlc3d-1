@@ -8,61 +8,58 @@
 #include <lc-representation.h>
 #include <filesystem>
 
-
 const idx RegularGrid::NOT_AN_INDEX = std::numeric_limits<idx>::max();
 const idx RegularGrid::MAX_SIZE_T = std::numeric_limits<idx>::max();
 
-RegularGrid::RegularGrid():
-        nx_(0), ny_(0), nz_(0),
-        numRegularPoints_(0),
-        dx_(0), dy_(0), dz_(0)
+RegularGrid::RegularGrid() : nx_(0), ny_(0), nz_(0),
+                             numRegularPoints_(0),
+                             dx_(0), dy_(0), dz_(0)
 
 {
-    xLimits_[0] = 0; xLimits_[1] = 0;
-    yLimits_[0] = 0; yLimits_[1] = 0;
-    zLimits_[0] = 0; zLimits_[1] = 0;
-
+  xLimits_[0] = 0;
+  xLimits_[1] = 0;
+  yLimits_[0] = 0;
+  yLimits_[1] = 0;
+  zLimits_[0] = 0;
+  zLimits_[1] = 0;
 }
 
-RegularGrid::RegularGrid(const RegularGrid &rg):
-        nx_(rg.nx_), ny_(rg.ny_), nz_(rg.nz_),
-        numRegularPoints_(rg.numRegularPoints_),
-        dx_(rg.dx_), dy_(rg.dy_), dz_(rg.dz_)
+RegularGrid::RegularGrid(const RegularGrid &rg) : nx_(rg.nx_), ny_(rg.ny_), nz_(rg.nz_),
+                                                  numRegularPoints_(rg.numRegularPoints_),
+                                                  dx_(rg.dx_), dy_(rg.dy_), dz_(rg.dz_)
 {
-    xLimits_[0] = rg.xLimits_[0];
-    xLimits_[1] = rg.xLimits_[1];
-    yLimits_[0] = rg.yLimits_[0];
-    yLimits_[1] = rg.yLimits_[1];
-    zLimits_[0] = rg.zLimits_[0];
-    zLimits_[1] = rg.zLimits_[1];
+  xLimits_[0] = rg.xLimits_[0];
+  xLimits_[1] = rg.xLimits_[1];
+  yLimits_[0] = rg.yLimits_[0];
+  yLimits_[1] = rg.yLimits_[1];
+  zLimits_[0] = rg.zLimits_[0];
+  zLimits_[1] = rg.zLimits_[1];
 
-    lookupList.insert(lookupList.begin(), rg.lookupList.begin() , rg.lookupList.end() );
+  lookupList.insert(lookupList.begin(), rg.lookupList.begin(), rg.lookupList.end());
 }
-
-
 
 double RegularGrid::getGridX(const unsigned int &xi) const
 {
-    if (nx_ == 1)
-        return 0.5*(xLimits_[0] + xLimits_[1]);
-    else
-        return xLimits_[0] + xi*dx_;
+  if (nx_ == 1)
+    return 0.5 * (xLimits_[0] + xLimits_[1]);
+  else
+    return xLimits_[0] + xi * dx_;
 }
 
 double RegularGrid::getGridY(const unsigned int &yi) const
 {
-    if (ny_ == 1)
-        return 0.5 * (yLimits_[0] + yLimits_[1] );
-    else
-        return yLimits_[0] + yi*dy_;
+  if (ny_ == 1)
+    return 0.5 * (yLimits_[0] + yLimits_[1]);
+  else
+    return yLimits_[0] + yi * dy_;
 }
 
 double RegularGrid::getGridZ(const unsigned int &zi) const
 {
-    if (nz_ == 1)
-        return 0.5 * (zLimits_[0] + zLimits_[1] );
-    else
-        return zLimits_[0] + zi*dz_;
+  if (nz_ == 1)
+    return 0.5 * (zLimits_[0] + zLimits_[1]);
+  else
+    return zLimits_[0] + zi * dz_;
 }
 
 // CONVERSION FROM LINEAR INDEXING WHICH IS USED TO STORE ALL LOOKUP STRUCTS
@@ -71,89 +68,94 @@ double RegularGrid::getGridZ(const unsigned int &zi) const
 void RegularGrid::linearToGridIndex(const idx li, idx &xi, idx &yi, idx &zi)
 {
 #ifdef DEBUG
-    assert(li < this->lookupList.size() ); // MAKE SURE POINT IS IN LIST
+  assert(li < this->lookupList.size()); // MAKE SURE POINT IS IN LIST
 #endif
 
-    // REGULAR GRID POINTS ARE ARRANGED STARTING FORM xmin,ymin,zmin
-    // THE INDEX INCREASES FIRST IN X-DIRECTION, THEN Y-DIRECTION AND
-    // FINALLY Z-DIRECTION
+  // REGULAR GRID POINTS ARE ARRANGED STARTING FORM xmin,ymin,zmin
+  // THE INDEX INCREASES FIRST IN X-DIRECTION, THEN Y-DIRECTION AND
+  // FINALLY Z-DIRECTION
 
+  idx ppxy = nx_ * ny_; // POINTS PER X-Y PLANE
 
-    idx ppxy = nx_*ny_; // POINTS PER X-Y PLANE
+  zi = li / ppxy; // GET Z-LEVEL
 
-    zi = li / ppxy;     // GET Z-LEVEL
+  idx c = li % ppxy; // NUMBER OF POINT IN INCOMPLETE LAYER
 
-    idx  c = li % ppxy;   // NUMBER OF POINT IN INCOMPLETE LAYER
-
-    yi = c / nx_;
-    xi = c % nx_;
-
+  yi = c / nx_;
+  xi = c % nx_;
 }
 
-//void RegularGrid::gridToLinearIndex(const idx xi, const idx yi, const idx zi)
+// void RegularGrid::gridToLinearIndex(const idx xi, const idx yi, const idx zi)
 idx RegularGrid::gridToLinearIndex(const idx xi, const idx yi, const idx zi)
 {
-    // CALCULATE ARRAY POSITION FROM GRID X,Y AND Z INDEXES xi, yi, zi
+  // CALCULATE ARRAY POSITION FROM GRID X,Y AND Z INDEXES xi, yi, zi
 #ifdef DEBUG
-    assert(xi < nx_);
-    assert(yi < ny_);
-    assert(zi < nz_);
+  assert(xi < nx_);
+  assert(yi < ny_);
+  assert(zi < nz_);
 #endif
-    const idx nxyp = nx_*ny_; // NUMBER OF NODES IN X-Y PLANE
+  const idx nxyp = nx_ * ny_; // NUMBER OF NODES IN X-Y PLANE
 
-    return xi + yi*nx_ + zi*nxyp;
+  return xi + yi * nx_ + zi * nxyp;
 }
-
 
 bool RegularGrid::createFromTetMesh(const unsigned int &nx,
                                     const unsigned int &ny,
                                     const unsigned int &nz,
                                     Geometry *geom)
 {
-    // CREATES INTEPOLATION TABLE FROM A TETRAHEDRAL MESH DESCRIBED BY geom
-    // SO THAT FAST INTEPOLATION CAN BE PERFORMED LATER ON
-    auto &bounds = geom->getBoundingBox();
-    xLimits_[0] = bounds.getXMin(); xLimits_[1] = bounds.getXMax();
-    yLimits_[0] = bounds.getYMin(); yLimits_[1] = bounds.getYMax();
-    zLimits_[0] = bounds.getZMin(); zLimits_[1] = bounds.getZMax();
+  // CREATES INTEPOLATION TABLE FROM A TETRAHEDRAL MESH DESCRIBED BY geom
+  // SO THAT FAST INTEPOLATION CAN BE PERFORMED LATER ON
+  auto &bounds = geom->getBoundingBox();
+  xLimits_[0] = bounds.getXMin();
+  xLimits_[1] = bounds.getXMax();
+  yLimits_[0] = bounds.getYMin();
+  yLimits_[1] = bounds.getYMax();
+  zLimits_[0] = bounds.getZMin();
+  zLimits_[1] = bounds.getZMax();
 
-    // LIMIT MIN NUMBER OF NODES TO 1 PER DIMENSION
-    nx_ = nx == 0 ? 1 : nx;
-    ny_ = ny == 0 ? 1 : ny;
-    nz_ = nz == 0 ? 1 : nz;
+  // LIMIT MIN NUMBER OF NODES TO 1 PER DIMENSION
+  nx_ = nx == 0 ? 1 : nx;
+  ny_ = ny == 0 ? 1 : ny;
+  nz_ = nz == 0 ? 1 : nz;
 
   numRegularPoints_ = nx_ * ny_ * nz_;
 
+  dx_ = (xLimits_[1] - xLimits_[0]) / (nx_ - 1);
+  dy_ = (yLimits_[1] - yLimits_[0]) / (ny_ - 1);
+  dz_ = (zLimits_[1] - zLimits_[0]) / (nz_ - 1);
 
-    dx_ = ( xLimits_[1] - xLimits_[0] ) / ( nx_ - 1 );
-    dy_ = ( yLimits_[1] - yLimits_[0] ) / ( ny_ - 1 );
-    dz_ = ( zLimits_[1] - zLimits_[0] ) / ( nz_ - 1 );
+  // SPECIAL CASE, WHEN ONLY A SINGLE NODE IN A DIRECTION IS REQUIRED, MAKE dx WHOLE WIDTH OF STRUCTURE
+  if (nx_ == 1)
+    dx_ = xLimits_[1] - xLimits_[0];
+  if (ny_ == 1)
+    dy_ = yLimits_[1] - yLimits_[0];
+  if (nz_ == 1)
+    dz_ = zLimits_[1] - zLimits_[0];
 
-    // SPECIAL CASE, WHEN ONLY A SINGLE NODE IN A DIRECTION IS REQUIRED, MAKE dx WHOLE WIDTH OF STRUCTURE
-    if ( nx_ == 1 ) dx_ = xLimits_[1] - xLimits_[0];
-    if ( ny_ == 1 ) dy_ = yLimits_[1] - yLimits_[0];
-    if ( nz_ == 1 ) dz_ = zLimits_[1] - zLimits_[0];
-
-    generateLookupList(geom);
-    //validateLookupVector();
-    return true;
+  generateLookupList(geom);
+  // validateLookupVector();
+  return true;
 }
 
-
-bool RegularGrid::generateLookupList(Geometry *geom) {
-  size_t cc = 0;    // coordinate counter
+bool RegularGrid::generateLookupList(Geometry *geom)
+{
+  size_t cc = 0; // coordinate counter
   std::vector<Vec3> gridPoints;
-  for (unsigned int k = 0; k < nz_; k++) {// loop over z
+  for (unsigned int k = 0; k < nz_; k++)
+  { // loop over z
     double z = getGridZ(k);
 
-    for (unsigned int j = 0; j < ny_; j++) { // loop over y
+    for (unsigned int j = 0; j < ny_; j++)
+    { // loop over y
       double y = getGridY(j);
-      for (unsigned int i = 0; i < nx_; i++, cc++) { // loop over x
+      for (unsigned int i = 0; i < nx_; i++, cc++)
+      { // loop over x
         double x = getGridX(i);
         gridPoints.emplace_back(x, y, z);
       }
-    }// end loop over y
-  }// end loop over z
+    } // end loop over y
+  } // end loop over z
   Coordinates gridCoordinates(std::move(gridPoints));
 
   // GENERATE INDEX TO TETS THAT CONTAIN EARCH REGULAR GRID POINT
@@ -162,20 +164,22 @@ bool RegularGrid::generateLookupList(Geometry *geom) {
   std::vector<unsigned int> indT; // index to tet containing a regular coordinate
   geom->genIndToTetsByCoords(indT,
                              gridCoordinates,
-                             false, // do NOT terminate app if a coord is not found
-                             false);//do NOT require LC element (although it should be preferred, add this option later)
+                             false,  // do NOT terminate app if a coord is not found
+                             false); // do NOT require LC element (although it should be preferred, add this option later)
 
   // NOW CALCULATE WEIGHTS AND NODE INDEXES FOR EACH REGULAR GRID POINT
   lookupList.clear();
   lookupList.reserve(numRegularPoints_);
   const Mesh &t = geom->getTetrahedra();
-  //double* p = geom->getPtrTop();
-  for (idx i = 0; i < numRegularPoints_; i++) {
+  // double* p = geom->getPtrTop();
+  for (idx i = 0; i < numRegularPoints_; i++)
+  {
 
-    lookup lu;                  // NEW LOOKUP TABLE ENTRY
-    lu.type = RegularGrid::OK;  // INITIALISE TO GOOD
+    lookup lu;                 // NEW LOOKUP TABLE ENTRY
+    lu.type = RegularGrid::OK; // INITIALISE TO GOOD
 
-    if (indT[i] != Geometry::NOT_AN_INDEX) { // IF CONTAINING TET ELEMENT WAS FOUND
+    if (indT[i] != Geometry::NOT_AN_INDEX)
+    { // IF CONTAINING TET ELEMENT WAS FOUND
       Vec3 targetPoint = gridCoordinates.getPoint(i);
 
       // SET INDEXES TO NEIGHBOURING VERTEXES
@@ -188,12 +192,14 @@ bool RegularGrid::generateLookupList(Geometry *geom) {
       // OF THE VERTEXES OF THE TET CONTAINING THE REGULAR POINT
       t.calcLocCoords(indT[i], geom->getCoordinates(), targetPoint, &lu.weight[0]);
 
-      if (t.getMaterialNumber(indT[i]) > MAT_DOMAIN7) {
+      if (t.getMaterialNumber(indT[i]) > MAT_DOMAIN7)
+      {
         lu.type = RegularGrid::NOT_LC;
       }
-
-    } else {// CONTAINING TET ELEMENT WAS NOT FOUND
-      lu.type = RegularGrid::NOT_FOUND;   // containing element not found
+    }
+    else
+    {                                   // CONTAINING TET ELEMENT WAS NOT FOUND
+      lu.type = RegularGrid::NOT_FOUND; // containing element not found
 
       lu.ind[0] = NOT_AN_INDEX;
       lu.ind[1] = NOT_AN_INDEX;
@@ -208,135 +214,160 @@ bool RegularGrid::generateLookupList(Geometry *geom) {
   }
   return true;
 }
-double RegularGrid::interpolateNode(const double* valuesIn,
-                                    const RegularGrid::lookup& L) const
+double RegularGrid::interpolateNode(const double *valuesIn,
+                                    const RegularGrid::lookup &L) const
 {
-    // USES PRE-CALCULATED WEIGHTS TO INTERPOLATE A SINGLE VALUE
-    // WITHIN A SINGLE TET-ELEMENT
+  // USES PRE-CALCULATED WEIGHTS TO INTERPOLATE A SINGLE VALUE
+  // WITHIN A SINGLE TET-ELEMENT
 
-    //
-    //  SOMETIMES REGULAR GRID NODES ARE NOT FOUND
-    //  (NUMERICAL NOISE, HOLE IN MESH, NON CUBOIDAL MESH etc. )
-    //  DEAL WITH IT
+  //
+  //  SOMETIMES REGULAR GRID NODES ARE NOT FOUND
+  //  (NUMERICAL NOISE, HOLE IN MESH, NON CUBOIDAL MESH etc. )
+  //  DEAL WITH IT
 
-    if ( L.type == RegularGrid::OK ) {
-        return valuesIn[ L.ind[0] ]*L.weight[0] +
-                valuesIn[L.ind[1] ]*L.weight[1] +
-                valuesIn[L.ind[2] ]*L.weight[2] +
-                valuesIn[L.ind[3] ]*L.weight[3];
-    }
-    else {
-        return std::numeric_limits<double>::quiet_NaN(); // OUTPUTS NaN
-    }
+  if (L.type == RegularGrid::OK)
+  {
+    return valuesIn[L.ind[0]] * L.weight[0] +
+           valuesIn[L.ind[1]] * L.weight[1] +
+           valuesIn[L.ind[2]] * L.weight[2] +
+           valuesIn[L.ind[3]] * L.weight[3];
+  }
+  else
+  {
+    return std::numeric_limits<double>::quiet_NaN(); // OUTPUTS NaN
+  }
 }
 
-void RegularGrid::interpolateDirNode(const double* vecin,
-                                     double* dirout,
-                                     const RegularGrid::lookup& L,
-                                     const idx npLC)const
+void RegularGrid::interpolateDirNode(const double *vecin,
+                                     double *dirout,
+                                     const RegularGrid::lookup &L,
+                                     const idx npLC) const
 {
-    // INTERPOLATE DIRECTOR TO A NODE TAKING INTO ACCOUNT HEAD-TAIL SYMMETRY.
-    // USE DIRECTOR OF FIRST NODE AS REFERENCE AND MAKE SURE DOT-PRODUCTS WITH
-    // OTHER 3 NODES IS POSITIVE
+  // INTERPOLATE DIRECTOR TO A NODE TAKING INTO ACCOUNT HEAD-TAIL SYMMETRY.
+  // USE DIRECTOR OF FIRST NODE AS REFERENCE AND MAKE SURE DOT-PRODUCTS WITH
+  // OTHER 3 NODES IS POSITIVE
 
-    // LOCAL COPIES OF DIRECTOR AT 4 ELEMENT CORNER NODES
-    double n1[3] = { vecin[L.ind[0]] , vecin[ L.ind[0]+npLC ] , vecin[L.ind[0] + 2*npLC]};
-    double n2[3] = { vecin[L.ind[1]] , vecin[ L.ind[1]+npLC ] , vecin[L.ind[1] + 2*npLC]};
-    double n3[3] = { vecin[L.ind[2]] , vecin[ L.ind[2]+npLC ] , vecin[L.ind[2] + 2*npLC]};
-    double n4[3] = { vecin[L.ind[3]] , vecin[ L.ind[3]+npLC ] , vecin[L.ind[3] + 2*npLC]};
+  // LOCAL COPIES OF DIRECTOR AT 4 ELEMENT CORNER NODES
+  double n1[3] = {vecin[L.ind[0]], vecin[L.ind[0] + npLC], vecin[L.ind[0] + 2 * npLC]};
+  double n2[3] = {vecin[L.ind[1]], vecin[L.ind[1] + npLC], vecin[L.ind[1] + 2 * npLC]};
+  double n3[3] = {vecin[L.ind[2]], vecin[L.ind[2] + npLC], vecin[L.ind[2] + 2 * npLC]};
+  double n4[3] = {vecin[L.ind[3]], vecin[L.ind[3] + npLC], vecin[L.ind[3] + 2 * npLC]};
 
-    // 3 DOT PRODUCTS WITH REFERENCE DIRECTOR
-    double dots[3] = {
-        n1[0]*n2[0] + n1[1]*n2[1] + n1[2]*n2[2],
-        n1[0]*n3[0] + n1[1]*n3[1] + n1[2]*n3[2],
-        n1[0]*n4[0] + n1[1]*n4[1] + n1[2]*n4[2] };
+  // 3 DOT PRODUCTS WITH REFERENCE DIRECTOR
+  double dots[3] = {
+      n1[0] * n2[0] + n1[1] * n2[1] + n1[2] * n2[2],
+      n1[0] * n3[0] + n1[1] * n3[1] + n1[2] * n3[2],
+      n1[0] * n4[0] + n1[1] * n4[1] + n1[2] * n4[2]};
 
-    // REDUCE TO SIGN ONLY
-    dots[0] = dots[0] >= 0 ? 1.0 : -1.0;
-    dots[1] = dots[1] >= 0 ? 1.0 : -1.0;
-    dots[2] = dots[2] >= 0 ? 1.0 : -1.0;
+  // REDUCE TO SIGN ONLY
+  dots[0] = dots[0] >= 0 ? 1.0 : -1.0;
+  dots[1] = dots[1] >= 0 ? 1.0 : -1.0;
+  dots[2] = dots[2] >= 0 ? 1.0 : -1.0;
 
+  // MULTIPLY EACH DIRECTOR BY SIGN
+  n2[0] *= dots[0];
+  n2[1] *= dots[0];
+  n2[2] *= dots[0];
+  n3[0] *= dots[1];
+  n3[1] *= dots[1];
+  n3[2] *= dots[1];
+  n4[0] *= dots[2];
+  n4[1] *= dots[2];
+  n4[2] *= dots[2];
 
-    // MULTIPLY EACH DIRECTOR BY SIGN
-    n2[0]*=dots[0]; n2[1]*=dots[0]; n2[2]*= dots[0];
-    n3[0]*=dots[1]; n3[1]*=dots[1]; n3[2]*= dots[1];
-    n4[0]*=dots[2]; n4[1]*=dots[2]; n4[2]*= dots[2];
+  // INTERPOLATE
+  dots[0] = n1[0] * L.weight[0] + n2[0] * L.weight[1] + n3[0] * L.weight[2] + n4[0] * L.weight[3]; // temp
+  dots[1] = n1[1] * L.weight[0] + n2[1] * L.weight[1] + n3[1] * L.weight[2] + n4[1] * L.weight[3];
+  dots[2] = n1[2] * L.weight[0] + n2[2] * L.weight[1] + n3[2] * L.weight[2] + n4[2] * L.weight[3];
 
-    // INTERPOLATE
-    dots[0] = n1[0]*L.weight[0] + n2[0]*L.weight[1] + n3[0]*L.weight[2] + n4[0]*L.weight[3]; //temp
-    dots[1] = n1[1]*L.weight[0] + n2[1]*L.weight[1] + n3[1]*L.weight[2] + n4[1]*L.weight[3];
-    dots[2] = n1[2]*L.weight[0] + n2[2]*L.weight[1] + n3[2]*L.weight[2] + n4[2]*L.weight[3];
+  // MAINTAIN UNIT LENGTH OF DIRECTOR - NORMALISE IT
+  double len = dots[0] * dots[0] + dots[1] * dots[1] + dots[2] * dots[2];
+  len = sqrt(len);
 
-    // MAINTAIN UNIT LENGTH OF DIRECTOR - NORMALISE IT
-    double len = dots[0]*dots[0] + dots[1]*dots[1] + dots[2]*dots[2];
-    len = sqrt(len);
-
-    dirout[0] = dots[0] / len;
-    dirout[1] = dots[1] / len;
-    dirout[2] = dots[2] / len;
-
+  dirout[0] = dots[0] / len;
+  dirout[1] = dots[1] / len;
+  dirout[2] = dots[2] / len;
 }
 
 void RegularGrid::interpolateToRegular(const double *valIn,
                                        double *&valOut,
-                                       const idx np) {
-    // INTERPOLATES A VARIABLE TO REGULAR GRID
-    if (!numRegularPoints_) {
-        RUNTIME_ERROR("Regular grid is not initialised.");
-    }
+                                       const idx np)
+{
+  // INTERPOLATES A VARIABLE TO REGULAR GRID
+  if (!numRegularPoints_)
+  {
+    RUNTIME_ERROR("Regular grid is not initialised.");
+  }
 
-    for (idx i = 0; i < lookupList.size(); i++ ) {
-        lookup L = lookupList[i];
+  for (idx i = 0; i < lookupList.size(); i++)
+  {
+    lookup L = lookupList[i];
 
-        // If trying to interpolate to a non-LC region
-        if ((L.type == RegularGrid::NOT_LC) && (np < MAX_SIZE_T)) {
-            valOut[i] = std::numeric_limits<double>::quiet_NaN(); // OUTPUTS NaN
-        }
-        else {
-            valOut[i] = interpolateNode( valIn, L);
-        }
+    // If trying to interpolate to a non-LC region
+    if ((L.type == RegularGrid::NOT_LC) && (np < MAX_SIZE_T))
+    {
+      valOut[i] = std::numeric_limits<double>::quiet_NaN(); // OUTPUTS NaN
     }
+    else
+    {
+      valOut[i] = interpolateNode(valIn, L);
+    }
+  }
 }
 
-std::vector<double> RegularGrid::interpolateToRegular(const SolutionVector &pot) const {
+std::vector<double> RegularGrid::interpolateToRegular(const SolutionVector &pot) const
+{
   std::vector<double> regPot;
-  for (auto &l : lookupList) {
-    if (l.type == RegularGrid::OK) {
+  for (auto &l : lookupList)
+  {
+    if (l.type == RegularGrid::OK)
+    {
       regPot.push_back(
-              pot.getValue(l.ind[0]) * l.weight[0] +
-              pot.getValue(l.ind[1]) * l.weight[1] +
-              pot.getValue(l.ind[2]) * l.weight[2] +
-              pot.getValue(l.ind[3]) * l.weight[3]);
+          pot.getValue(l.ind[0]) * l.weight[0] +
+          pot.getValue(l.ind[1]) * l.weight[1] +
+          pot.getValue(l.ind[2]) * l.weight[2] +
+          pot.getValue(l.ind[3]) * l.weight[3]);
     }
-    else {
+    else
+    {
       regPot.push_back(std::numeric_limits<double>::quiet_NaN());
     }
   }
   return regPot;
 }
 
-std::vector<double> RegularGrid::interpolateToRegularS(const std::vector<qlc3d::Director> &dir) const {
+std::vector<double> RegularGrid::interpolateToRegularS(const std::vector<qlc3d::Director> &dir) const
+{
   std::vector<double> regS;
-  for (auto &l : lookupList) {
-    if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND) {
+  for (auto &l : lookupList)
+  {
+    if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND)
+    {
       regS.push_back(std::numeric_limits<double>::quiet_NaN());
-    } else {
+    }
+    else
+    {
       regS.push_back(
-              dir[l.ind[0]].S() * l.weight[0] +
-              dir[l.ind[1]].S() * l.weight[1] +
-              dir[l.ind[2]].S() * l.weight[2] +
-              dir[l.ind[3]].S() * l.weight[3]);
+          dir[l.ind[0]].S() * l.weight[0] +
+          dir[l.ind[1]].S() * l.weight[1] +
+          dir[l.ind[2]].S() * l.weight[2] +
+          dir[l.ind[3]].S() * l.weight[3]);
     }
   }
   return regS;
 }
 
-std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const {
+std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const
+{
   std::vector<qlc3d::Director> regDir;
-  for (auto &l : lookupList) {
-    if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND) {
+  for (auto &l : lookupList)
+  {
+    if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND)
+    {
       regDir.push_back(qlc3d::Director({1, 0, 0}, std::numeric_limits<double>::quiet_NaN())); // S = NaN in non-LC regions
-    } else {
+    }
+    else
+    {
 
       double nx = dir[l.ind[0]].nx() * l.weight[0] +
                   dir[l.ind[1]].nx() * l.weight[1] +
@@ -367,93 +398,122 @@ std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std
   return regDir;
 }
 
-
 void RegularGrid::interpolateDirToRegular(const double *vecIn,
                                           double *&vecOut,
-                                          const idx npLC) {
-    // INTERPOLATES DIRECTOR TO REGULAR GRID.
-    // DOES DIRECTOR SWAPPING WITHIN ELEMENT TO MAKE SURE THAT
-    // ALL ELEMENT ARE ORIENTED IN SAME(ISH) DIRECTION.
-    // THIS IS NECESSARY TO MAINTAIN UNIT LENGTH OF DIRECTOR
-    // DIRECTOR COMPONENTS ARE ORDERED AS nx,nx,nx..., ny,ny,ny... nz,nz,nz...
-    if (!numRegularPoints_) {
-        throw std::runtime_error(fmt::format("Regular grid is not intialised in {}, {}", __FILE__, __func__ ));
-    }
-    for (idx i = 0; i < numRegularPoints_; i++) {
-        lookup L = lookupList[i];
+                                          const idx npLC)
+{
+  // INTERPOLATES DIRECTOR TO REGULAR GRID.
+  // DOES DIRECTOR SWAPPING WITHIN ELEMENT TO MAKE SURE THAT
+  // ALL ELEMENT ARE ORIENTED IN SAME(ISH) DIRECTION.
+  // THIS IS NECESSARY TO MAINTAIN UNIT LENGTH OF DIRECTOR
+  // DIRECTOR COMPONENTS ARE ORDERED AS nx,nx,nx..., ny,ny,ny... nz,nz,nz...
+  if (!numRegularPoints_)
+  {
+    throw std::runtime_error(fmt::format("Regular grid is not intialised in {}, {}", __FILE__, __func__));
+  }
+  for (idx i = 0; i < numRegularPoints_; i++)
+  {
+    lookup L = lookupList[i];
 
-        // If LC node
-        if (L.type == RegularGrid::OK) {
-            double dir[3];
-            interpolateDirNode( vecIn,dir,L, npLC);
-            vecOut[i + 0 * numRegularPoints_] = dir[0];
-            vecOut[i + 1 * numRegularPoints_] = dir[1];
-            vecOut[i + 2 * numRegularPoints_] = dir[2];
-        }
-        else {
-            vecOut[i + 0 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
-            vecOut[i + 1 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
-            vecOut[i + 2 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
-        }
+    // If LC node
+    if (L.type == RegularGrid::OK)
+    {
+      double dir[3];
+      interpolateDirNode(vecIn, dir, L, npLC);
+      vecOut[i + 0 * numRegularPoints_] = dir[0];
+      vecOut[i + 1 * numRegularPoints_] = dir[1];
+      vecOut[i + 2 * numRegularPoints_] = dir[2];
     }
+    else
+    {
+      vecOut[i + 0 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
+      vecOut[i + 1 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
+      vecOut[i + 2 * numRegularPoints_] = std::numeric_limits<double>::quiet_NaN();
+    }
+  }
 }
 
 /**
- * Writes potential, director and order parameted to a VTK grid. TODO: this should be in part of a separate resul IO
+ * Writes potential, director and order parameter to a VTK grid, this is modifed to also write all nodal energy contributions. TODO: this should be in part of a separate resul IO
  * file/class
-*/
+ */
 bool RegularGrid::writeVTKGrid(const std::filesystem::path &fileName,
                                const SolutionVector &pot,
-                               const std::vector<qlc3d::Director> &dir) {
+                               const std::vector<qlc3d::Director> &dir,
+                               const SolutionVector &tiltE,
+                               const SolutionVector &twistE,
+                               const SolutionVector &bendE,
+                               const SolutionVector &elasticE,
+                               const SolutionVector &thermoE,
+                               const SolutionVector &electricE,
+                               const SolutionVector &totalE)
+{
 
-    if (numRegularPoints_ == 0) {
-      RUNTIME_ERROR("Regular grid is not initialised.");
-    }
-    std::fstream fid;
-    fid.open( fileName, std::fstream::out );
+  if (numRegularPoints_ == 0)
+  {
+    RUNTIME_ERROR("Regular grid is not initialised.");
+  }
+  std::fstream fid;
+  fid.open(fileName, std::fstream::out);
 
-    if (!fid.is_open() ) {    // EXIT IF COULDN'T OPEN FILE // TODO: throw exception instead?
-        return false;
-    }
-    std::vector<double> regPot = interpolateToRegular(pot);
-    std::vector<double> regS = interpolateToRegularS(dir);
-    std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+  if (!fid.is_open())
+  { // EXIT IF COULDN'T OPEN FILE // TODO: throw exception instead?
+    return false;
+  }
+  std::vector<double> regPot = interpolateToRegular(pot);
+  std::vector<double> regTiltE = interpolateToRegular(tiltE);
+  std::vector<double> regTwistE = interpolateToRegular(twistE);
+  std::vector<double> regBendE = interpolateToRegular(bendE);
+  std::vector<double> regElasticE = interpolateToRegular(elasticE);
+  std::vector<double> regThermoE = interpolateToRegular(thermoE);
+  std::vector<double> regElectricE = interpolateToRegular(electricE);
+  std::vector<double> regTotalE = interpolateToRegular(totalE);
+  std::vector<double> regS = interpolateToRegularS(dir);
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
 
-    idx num_points[3] = {nx_, ny_, nz_};
-    double grid_spacing[3] = {dx_, dy_, dz_};
-    double origin[3] = { getGridX(0), getGridY(0), getGridZ(0)};
-    vtkIOFun::writeID( fid );
+  idx num_points[3] = {nx_, ny_, nz_};
+  double grid_spacing[3] = {dx_, dy_, dz_};
+  double origin[3] = {getGridX(0), getGridY(0), getGridZ(0)};
+  vtkIOFun::writeID(fid);
 
-    vtkIOFun::writeHeader( fid,
-                           "header string",
-                           vtkIOFun::ASCII,
-                           num_points,
-                           grid_spacing,
-                           origin);
+  vtkIOFun::writeHeader(fid,
+                        "header string",
+                        vtkIOFun::ASCII,
+                        num_points,
+                        grid_spacing,
+                        origin);
 
-    vtkIOFun::writeScalarData(fid, "potential", regPot);
-    vtkIOFun::writeScalarData(fid,  "S", regS);
-    vtkIOFun::writeVectorData(fid, "director", regN);
-    fid.close();
-    return true;
+  vtkIOFun::writeScalarData(fid, "Potential", regPot);
+  vtkIOFun::writeScalarData(fid, "S", regS);
+  vtkIOFun::writeVectorData(fid, "Director", regN);
+  vtkIOFun::writeScalarData(fid, "Splay_Energy", regTiltE);
+  vtkIOFun::writeScalarData(fid, "Twist_Energy", regTwistE);
+  vtkIOFun::writeScalarData(fid, "Bend_Energy", regBendE);
+  vtkIOFun::writeScalarData(fid, "Elastic_Energy", regElasticE);
+  vtkIOFun::writeScalarData(fid, "Thermotropic_Energy", regThermoE);
+  vtkIOFun::writeScalarData(fid, "Electric_Energy", regElectricE);
+  vtkIOFun::writeScalarData(fid, "Total_Free_Energy", regTotalE);
+
+  fid.close();
+  return true;
 }
-
-
 
 bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
                               const SolutionVector &pot,
                               const std::vector<qlc3d::Director> &dir,
-                              const double time) {
+                              const double time)
+{
   // WRITES OUTPUT IN A MATLAB FILE.
   // VALUES ARE WRITTEN IN 2D MATRIXES, WHERE EACH ROW CORRESPONDS TO A
   // COLUMN OF VALUES Zmin->Zmax  IN THE MODELLED STRUCTURE
 
   std::ofstream fid(fileName);
-  if (!fid.good()) {
+  if (!fid.good())
+  {
     return false;
   }
 
-  fid << "grid_size = ["<<nx_<<","<<ny_<<","<<nz_<<"];"<<std::endl;
+  fid << "grid_size = [" << nx_ << "," << ny_ << "," << nz_ << "];" << std::endl;
   fid << "current_time = " << time << ";" << std::endl;
 
   std::vector<double> regPot = interpolateToRegular(pot);
@@ -465,17 +525,18 @@ bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
   ny.resize(regS.size(), 0);
   nz.resize(regS.size(), 0);
 
-  for (auto &d : regN) {
+  for (auto &d : regN)
+  {
     nx.push_back(d.nx());
     ny.push_back(d.ny());
     nz.push_back(d.nz());
   }
 
   MatlabIOFun::writeNumberColumns(fid, "V", regPot, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "nx", nx,nx_, ny_, nz_ );
-  MatlabIOFun::writeNumberColumns(fid,"ny", ny,nx_, ny_, nz_ );
-  MatlabIOFun::writeNumberColumns(fid,"nz", nz,nx_, ny_, nz_ );
-  MatlabIOFun::writeNumberColumns(fid,"S",regS,nx_, ny_, nz_ );
+  MatlabIOFun::writeNumberColumns(fid, "nx", nx, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "ny", ny, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "nz", nz, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "S", regS, nx_, ny_, nz_);
 
   fid.close();
 
@@ -484,29 +545,38 @@ bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
 
 bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
                                  const std::vector<qlc3d::Director> &dir,
-                                 double time) {
+                                 double time)
+{
   std::ofstream fid(fileName);
-  if (!fid.good()) {
+  if (!fid.good())
+  {
     return false;
   }
 
   // First line is grid size
-  fid << nx_ <<','<< ny_<<',' << nz_ <<','<< time << std::endl;
+  fid << nx_ << ',' << ny_ << ',' << nz_ << ',' << time << std::endl;
 
   std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
 
-  for (idx y = 0; y < ny_; y++) {
-    for (idx x = 0; x < nx_; x++) {
-      for (idx z = 0; z < nz_; z++) {
+  for (idx y = 0; y < ny_; y++)
+  {
+    for (idx x = 0; x < nx_; x++)
+    {
+      for (idx z = 0; z < nz_; z++)
+      {
         idx i = gridToLinearIndex(x, y, z);
 
-        if (z > 0) {
-          fid <<",";
+        if (z > 0)
+        {
+          fid << ",";
         }
 
-        if (std::isnan(regN[i].S())) {
+        if (std::isnan(regN[i].S()))
+        {
           fid << "NaN,NaN,NaN";
-        } else {
+        }
+        else
+        {
           fid << regN[i].nx() << "," << regN[i].ny() << "," << regN[i].nz();
         }
       }

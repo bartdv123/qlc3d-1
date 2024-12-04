@@ -1,0 +1,1 @@
+ "liblib-qlc3d.a" ../extern/SpaMtrix/lib/libSpaMtrix.a -lgomp -lpthread "../extern/fmt-8.1.1/libfmt.a" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

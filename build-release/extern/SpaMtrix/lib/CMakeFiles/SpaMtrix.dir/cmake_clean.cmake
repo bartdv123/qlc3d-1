@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/SpaMtrix.dir/src/cholesky.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/cholesky.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/cholincpreconditioner.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/cholincpreconditioner.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/densematrix.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/densematrix.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/diagpreconditioner.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/diagpreconditioner.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/fleximatrix.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/fleximatrix.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/ircmatrix.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/ircmatrix.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/iterativesolvers.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/iterativesolvers.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/lu.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/lu.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/luincpreconditioner.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/luincpreconditioner.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/matrixmaker.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/matrixmaker.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/powermethod.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/powermethod.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/reader.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/reader.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/spamtrix_blas.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/spamtrix_blas.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/tdmatrix.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/tdmatrix.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/vector.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/vector.cpp.obj.d"
+  "CMakeFiles/SpaMtrix.dir/src/writer.cpp.obj"
+  "CMakeFiles/SpaMtrix.dir/src/writer.cpp.obj.d"
+  "libSpaMtrix.a"
+  "libSpaMtrix.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/SpaMtrix.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

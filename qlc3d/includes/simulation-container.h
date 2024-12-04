@@ -32,7 +32,8 @@ class ResultOutput;
 class PotentialSolver;
 class ILCSolver;
 
-class SimulationContainer {
+class SimulationContainer
+{
     Configuration &configuration;
     ResultOutput &resultOutput;
     std::shared_ptr<PotentialSolver> potentialSolver;
@@ -60,6 +61,15 @@ class SimulationContainer {
     SolutionVector q;
     SolutionVector qn;
     SolutionVector v;
+
+    // add energy contribution vectors
+    SolutionVector tiltE;
+    SolutionVector twistE;
+    SolutionVector bendE;
+    SolutionVector elasticE;
+    SolutionVector thermoE;
+    SolutionVector electricE;
+    SolutionVector totalE;
 
     // potential consistency arrays // TODO: probably never used
     std::unique_ptr<double[]> v_cons;
@@ -107,6 +117,6 @@ public:
      * Returns the current simulation state.
      * @return current simulation state object
      */
-    const SimulationState& currentState() const;
+    const SimulationState &currentState() const;
 };
-#endif //PROJECT_QLC3D_SIMULATION_CONTAINER_H
+#endif // PROJECT_QLC3D_SIMULATION_CONTAINER_H

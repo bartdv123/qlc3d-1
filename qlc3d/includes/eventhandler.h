@@ -10,9 +10,9 @@
 #include <solver-settings.h>
 #include <resultio.h>
 
-
-namespace SpaMtrix {
-class IRCMatrix;
+namespace SpaMtrix
+{
+    class IRCMatrix;
 }
 class SimulationState;
 class ResultOutput;
@@ -20,18 +20,28 @@ class PotentialSolver;
 class SimulationAdaptiveTimeStep;
 // CONVENIENCE STRUCT WITH POINTERS TO THE DIFFERENT GEOMETRY OBJECTS
 // NEEDED IN MESH REFINEMENT.
-struct Geometries {
-    Geometry *geom_orig;    // ORIGINAL, LOADED FROM FILE
-    Geometry *geom_prev;    // FROM PREVIOUS REFINEMENT ITERATION
-    Geometry *geom;         // CURRENT, WORKING GEOMETRY
-    Geometries(): geom_orig(NULL), geom_prev(NULL), geom(NULL) {}
+struct Geometries
+{
+    Geometry *geom_orig; // ORIGINAL, LOADED FROM FILE
+    Geometry *geom_prev; // FROM PREVIOUS REFINEMENT ITERATION
+    Geometry *geom;      // CURRENT, WORKING GEOMETRY
+    Geometries() : geom_orig(NULL), geom_prev(NULL), geom(NULL) {}
 };
 
-struct SolutionVectors {
-    SolutionVector *q;      // CURRENT Q-TENSOR
-    SolutionVector *qn;     // PREVIOUS Q-TENSOR
-    SolutionVector *v;      // POTENTIAL
-    SolutionVectors(): q(NULL), qn(NULL), v(NULL) {}
+struct SolutionVectors
+{
+    SolutionVector *q;         // CURRENT Q-TENSOR
+    SolutionVector *qn;        // PREVIOUS Q-TENSOR
+    SolutionVector *v;         // POTENTIAL
+    SolutionVector *tiltE;     // Tilt energy
+    SolutionVector *twistE;    // Twist energy
+    SolutionVector *bendE;     // Bend energy
+    SolutionVector *elasticE;  // Total elastic energy
+    SolutionVector *thermoE;   // Thermotropic energy
+    SolutionVector *electricE; // Electric energy
+    SolutionVector *totalE;    // Total free energy
+
+    SolutionVectors() : q(NULL), qn(NULL), v(NULL), tiltE(NULL), twistE(NULL), bendE(NULL), elasticE(NULL), thermoE(NULL), electricE(NULL), totalE(NULL) {}
 };
 
 void handleInitialEvents(SimulationState &simulationState,

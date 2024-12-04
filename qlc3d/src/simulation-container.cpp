@@ -29,23 +29,24 @@ SimulationContainer::SimulationContainer(Configuration &config,
                                          ILCSolver &lcSolver,
                                          EventList &eventList,
                                          SimulationState &simulationState,
-                                         SimulationAdaptiveTimeStep &adaptiveTimeStep) :
-        configuration(config),
-        resultOutput(resultOut),
-        potentialSolver(potentialSolver),
-        lcSolver(lcSolver),
-        electrodes(nullptr),
-        boxes(config.getInitialVolumeOrientation()),
-        alignment(*config.getAlignment()),
-        regGrid(new RegularGrid()),
-        eventList(eventList),
-        simulationState(simulationState),
-        adaptiveTimeStep(adaptiveTimeStep) {
+                                         SimulationAdaptiveTimeStep &adaptiveTimeStep) : configuration(config),
+                                                                                         resultOutput(resultOut),
+                                                                                         potentialSolver(potentialSolver),
+                                                                                         lcSolver(lcSolver),
+                                                                                         electrodes(nullptr),
+                                                                                         boxes(config.getInitialVolumeOrientation()),
+                                                                                         alignment(*config.getAlignment()),
+                                                                                         regGrid(new RegularGrid()),
+                                                                                         eventList(eventList),
+                                                                                         simulationState(simulationState),
+                                                                                         adaptiveTimeStep(adaptiveTimeStep)
+{
 
     Energy_fid = nullptr;
 }
 
-void SimulationContainer::initialise() {
+void SimulationContainer::initialise()
+{
     simulationState.state(RunningState::INITIALISING);
     simu = configuration.getSimu();
     lc = configuration.getLC();
@@ -53,26 +54,32 @@ void SimulationContainer::initialise() {
     // CHANGE CURRENT DIR TO WORKING DIRECTORY
     std::error_code ec;
     fs::current_path(configuration.currentDirectory(), ec);
-    if (ec.value()) {
+    if (ec.value())
+    {
         RUNTIME_ERROR(fmt::format("Could not set working directory to {}", configuration.currentDirectory()));
     }
     Log::info("current working directory is {}", std::filesystem::current_path());
 
     // Create result output directory if it does not exist
-    if (!std::filesystem::exists(simu->getSaveDirAbsolutePath()) && !std::filesystem::create_directories(simu->getSaveDirAbsolutePath())) {
-            RUNTIME_ERROR(fmt::format("Could not create directory {}", simu->getSaveDirAbsolutePath().string()));
+    if (!std::filesystem::exists(simu->getSaveDirAbsolutePath()) && !std::filesystem::create_directories(simu->getSaveDirAbsolutePath()))
+    {
+        RUNTIME_ERROR(fmt::format("Could not create directory {}", simu->getSaveDirAbsolutePath().string()));
     }
     Log::info("output and result files will be written into {}", simu->getSaveDirAbsolutePath().string());
 
-    if (simu->getSaveFormat().empty()) {
-      Log::warn("No save format specified, no results will be saved. Valid save formats are " + StringUtil::toString(Simu::VALID_SAVE_FORMATS) );
-    } else {
-      auto saveFormats = simu->getSaveFormatStrings();
-      Log::info("results will be saved every {} iterations in {} formats {}", simu->getSaveIter(), saveFormats.size(), StringUtil::toString(saveFormats));
+    if (simu->getSaveFormat().empty())
+    {
+        Log::warn("No save format specified, no results will be saved. Valid save formats are " + StringUtil::toString(Simu::VALID_SAVE_FORMATS));
+    }
+    else
+    {
+        auto saveFormats = simu->getSaveFormatStrings();
+        Log::info("results will be saved every {} iterations in {} formats {}", simu->getSaveIter(), saveFormats.size(), StringUtil::toString(saveFormats));
     }
 
-    if (resultOutput.isRegularGridRequired() && (simu->getRegularGridXCount() == 0 || simu->getRegularGridYCount() == 0 || simu->getRegularGridZCount() == 0)) {
-      throw std::runtime_error("Regular grid is required by at least one result file format, but it has not been defined in the settings file.");
+    if (resultOutput.isRegularGridRequired() && (simu->getRegularGridXCount() == 0 || simu->getRegularGridYCount() == 0 || simu->getRegularGridZCount() == 0))
+    {
+        throw std::runtime_error("Regular grid is required by at least one result file format, but it has not been defined in the settings file.");
     }
 
     eventList.setSaveIter(simu->getSaveIter());
@@ -90,14 +97,16 @@ void SimulationContainer::initialise() {
     std::filesystem::path settingsBackup = simu->getSaveDirAbsolutePath() / "settings.qfg";
     Log::info("Creating backup of settings file in {}", settingsBackup.string());
     // explicit deletion required due to mingw bug with replace on copy https://sourceforge.net/p/mingw-w64/bugs/852/
-    if (fs::exists(settingsBackup) && !fs::remove(settingsBackup)) {
+    if (fs::exists(settingsBackup) && !fs::remove(settingsBackup))
+    {
         RUNTIME_ERROR(fmt::format("Unable to delete old settings file backup file {}", settingsBackup));
     }
 
     if (!std::filesystem::copy_file(configuration.settingsFile(),
                                     simu->getSaveDirAbsolutePath() / "settings.qfg",
-                                    std::filesystem::copy_options::overwrite_existing)) {
-      RUNTIME_ERROR(fmt::format("Could not back up settings file {} to {}", configuration.settingsFile(), settingsBackup));
+                                    std::filesystem::copy_options::overwrite_existing))
+    {
+        RUNTIME_ERROR(fmt::format("Could not back up settings file {} to {}", configuration.settingsFile(), settingsBackup));
     }
 
     Energy_fid = nullptr; // file for outputting free energy
@@ -115,10 +124,10 @@ void SimulationContainer::initialise() {
                     simu->getRegularGridXCount(),
                     simu->getRegularGridYCount(),
                     simu->getRegularGridZCount());
-    geom1.setTo(&geom_orig);            // in the beginning working geometry is original
+    geom1.setTo(&geom_orig); // in the beginning working geometry is original
 
     // SET CONVENIENCE STRUCT OF POINTERS
-    //Geometries geometries;
+    // Geometries geometries;
     geometries.geom = &geom1;
     geometries.geom_orig = &geom_orig;
     // ==============================================
@@ -127,9 +136,45 @@ void SimulationContainer::initialise() {
     //
     //================================================
     Log::info("creating initial electric potential");
-    v = SolutionVector((idx) geom1.getnp(), 1);
+    v = SolutionVector((idx)geom1.getnp(), 1);
     v.allocateFixedNodesArrays(geom1);
     v.setPeriodicEquNodes(geom1); // periodic nodes
+
+    // ==============================================
+    //
+    //	Logging of nodal energy data throughout the simulation
+    //
+    //================================================
+
+    // Tilt energy
+    Log::info("creating initial nodal energy containers");
+    tiltE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    tiltE.allocateFixedNodesArrays(geom1);
+    tiltE.setPeriodicEquNodes(geom1);
+    // Twist energy
+    twistE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    twistE.allocateFixedNodesArrays(geom1);
+    twistE.setPeriodicEquNodes(geom1);
+    // Bend energy
+    bendE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    bendE.allocateFixedNodesArrays(geom1);
+    bendE.setPeriodicEquNodes(geom1);
+    // Total elastic energy
+    elasticE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    elasticE.allocateFixedNodesArrays(geom1);
+    elasticE.setPeriodicEquNodes(geom1);
+    // Thermotropic energy
+    thermoE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    thermoE.allocateFixedNodesArrays(geom1);
+    thermoE.setPeriodicEquNodes(geom1);
+    // Electric energy
+    electricE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    electricE.allocateFixedNodesArrays(geom1);
+    electricE.setPeriodicEquNodes(geom1);
+    // Total free energy
+    totalE = SolutionVector((idx)geom1.getnp(), 1); // Solution vector for scalar data (np x 1)
+    totalE.allocateFixedNodesArrays(geom1);
+    totalE.setPeriodicEquNodes(geom1);
 
     // =============================================================
     //
@@ -138,17 +183,24 @@ void SimulationContainer::initialise() {
     //==============================================================
     // create vector for 5 * npLC Q-tensor components
     Log::info("Creating initial Q tensor");
-    q = SolutionVector(geom1.getnpLC(), 5);    //  Q-tensor for current time step
-    qn = SolutionVector(geom1.getnpLC(), 5);   //  Q-tensor from previous time step
+    q = SolutionVector(geom1.getnpLC(), 5);  //  Q-tensor for current time step
+    qn = SolutionVector(geom1.getnpLC(), 5); //  Q-tensor from previous time step
 
     initialiseLcSolutionVector(q, *simu, *lc, *boxes, alignment, geom1);
 
-    qn = q;  // q-previous = q-current in first iteration
+    qn = q; // q-previous = q-current in first iteration
 
-    // SET CONVENIENCE POINTERS STRUCTURE
+    // SET CONVENIENCE POINTERS STRUCTURE, access the elements in the solutionVectors more easily
     solutionVectors.q = &q;
     solutionVectors.qn = &qn;
     solutionVectors.v = &v;
+    solutionVectors.tiltE = &tiltE;
+    solutionVectors.twistE = &twistE;
+    solutionVectors.bendE = &bendE;
+    solutionVectors.elasticE = &elasticE;
+    solutionVectors.thermoE = &thermoE;
+    solutionVectors.electricE = &electricE;
+    solutionVectors.totalE = &totalE;
 
     //********************************************************************
     //*
@@ -179,99 +231,129 @@ void SimulationContainer::initialise() {
     maxdq = 0;
 }
 
-bool SimulationContainer::hasIteration() const {
+bool SimulationContainer::hasIteration() const
+{
     auto end = simu->getEndCriterion();
     double endValue = simu->getEndValue();
-    if (end == Simu::Iterations) {
-        return simulationState.currentIteration() <= (int) endValue;
-    } else if (end == Simu::Time) {
+    if (end == Simu::Iterations)
+    {
+        return simulationState.currentIteration() <= (int)endValue;
+    }
+    else if (end == Simu::Time)
+    {
         return simulationState.currentTime().equals(endValue) || simulationState.currentTime().lessThan(endValue);
-    } else if (end == Simu::Change) {
+    }
+    else if (end == Simu::Change)
+    {
         // Change is unknown until at leas one iteration has run, so at lest run one iteration.
-        if (simulationState.currentIteration() == 1) {
+        if (simulationState.currentIteration() == 1)
+        {
             return true;
         }
 
         double currentChange = simulationState.change();
-        if (simu->simulationMode() == TimeStepping) {
+        if (simu->simulationMode() == TimeStepping)
+        {
             Log::info("|dQ| = {}, EndValue = {}", fabs(currentChange), endValue);
         }
-        if (currentChange <= endValue) {
-          Log::info("Change {} is smaller than end value {}, ending simulation.", currentChange, endValue);
-          return false;
+        if (currentChange <= endValue)
+        {
+            Log::info("Change {} is smaller than end value {}, ending simulation.", currentChange, endValue);
+            return false;
         }
-    } else {
+    }
+    else
+    {
         assert(false);
     }
     return true;
 }
 
-void SimulationContainer::runIteration() {
-  Stopwatch stopwatch;
-  stopwatch.start();
-  simulationState.state(RunningState::RUNNING);
-  //adjustTimeStepSize(); // calculate time step size for this iteration.
-  adaptiveTimeStep.calculateTimeStep(simulationState);
+void SimulationContainer::runIteration()
+{
+    Stopwatch stopwatch;
+    stopwatch.start();
+    simulationState.state(RunningState::RUNNING);
+    // adjustTimeStepSize(); // calculate time step size for this iteration.
+    adaptiveTimeStep.calculateTimeStep(simulationState);
 
-  std::chrono::duration<double> elapsedSeconds = std::chrono::steady_clock::now() - startInstant;
+    std::chrono::duration<double> elapsedSeconds = std::chrono::steady_clock::now() - startInstant;
 
-  Log::clearIndent();
-  Log::info("Iteration {}, Time = {:e}s. Real time = {:.3}s. dt = {}s.",
-            simulationState.currentIteration(),
-            simulationState.currentTime().getTime(),
-            elapsedSeconds.count(),
-            simulationState.dt());
+    Log::clearIndent();
+    Log::info("Iteration {}, Time = {:e}s. Real time = {:.3}s. dt = {}s.",
+              simulationState.currentIteration(),
+              simulationState.currentTime().getTime(),
+              elapsedSeconds.count(),
+              simulationState.dt());
 
-  Log::incrementIndent();
+    Log::incrementIndent();
 
-  // mve this to event handling/result output
-  if (simu->getOutputEnergy()) {
-    CalculateFreeEnergy(Energy_fid,
-                        simulationState.currentIteration(),
-                        simulationState.currentTime().getTime(),
-                        *lc,
-                        &geom1,
-                        &v,
-                        &q);
-  }
+    // mve this to event handling/result output
+    if (simu->getOutputEnergy())
+    {
+        CalculateFreeEnergy(Energy_fid,
+                            simulationState.currentIteration(),
+                            simulationState.currentTime().getTime(),
+                            *lc,
+                            &geom1,
+                            &v,
+                            &q);
 
-  // CALCULATES Q-TENSOR AND POTENTIAL
-  auto solverResult = updateSolutions();
-  simulationState.change(solverResult.dq);
+        CalculateNodalFreeEnergy(&tiltE,
+                                 &twistE,
+                                 &bendE,
+                                 &elasticE,
+                                 &thermoE,
+                                 &electricE,
+                                 &totalE,
+                                 simulationState.currentIteration(),
+                                 simulationState.currentTime().getTime(),
+                                 *lc,
+                                 &geom1,
+                                 &v,
+                                 &q);
+    }
 
-  simulationState.currentTime().increment(simulationState.dt());
+    // CALCULATES Q-TENSOR AND POTENTIAL
+    auto solverResult = updateSolutions();
+    simulationState.change(solverResult.dq);
 
-  // Note: currently event must be handled after incrementing time, but before incrementing iteration,
-  // otherwise we can miss save event defined by iteration.
-  handleEvents(eventList,
-               *electrodes,
-               alignment,
-               *simu,
-               simulationState,
-               geometries,
-               solutionVectors,
-               *lc,
-               Kq,
-               resultOutput,
-               *potentialSolver,
-               adaptiveTimeStep);
+    simulationState.currentTime().increment(simulationState.dt());
 
-  simulationState.currentIteration(simulationState.currentIteration() + 1);
+    // Note: currently event must be handled after incrementing time, but before incrementing iteration,
+    // otherwise we can miss save event defined by iteration.
+    handleEvents(eventList,
+                 *electrodes,
+                 alignment,
+                 *simu,
+                 simulationState,
+                 geometries,
+                 solutionVectors,
+                 *lc,
+                 Kq,
+                 resultOutput,
+                 *potentialSolver,
+                 adaptiveTimeStep);
 
-  Log::info("Total iteration time={:.3}s, LC assembly time = {:.3}s, LC solver time = {:.3}s, |dQ| = {:.3}",
-  stopwatch.elapsedSeconds(), solverResult.elapsedTimes.assemblyTimeSeconds, solverResult.elapsedTimes.solveTimeSeconds, solverResult.dq);
+    simulationState.currentIteration(simulationState.currentIteration() + 1);
+
+    Log::info("Total iteration time={:.3}s, LC assembly time = {:.3}s, LC solver time = {:.3}s, |dQ| = {:.3}",
+              stopwatch.elapsedSeconds(), solverResult.elapsedTimes.assemblyTimeSeconds, solverResult.elapsedTimes.solveTimeSeconds, solverResult.dq);
 }
 
-void SimulationContainer::postSimulationTasks() {
+void SimulationContainer::postSimulationTasks()
+{
     simulationState.state(RunningState::COMPLETED);
-    resultOutput.writeResults(*geometries.geom, v, q, simulationState);
+    resultOutput.writeResults(*geometries.geom, v, q, tiltE, twistE, bendE, elasticE, thermoE, electricE, totalE, simulationState);
 }
 
-const SimulationState &SimulationContainer::currentState() const {
+const SimulationState &SimulationContainer::currentState() const
+{
     return simulationState;
 }
 
-LCSolverResult SimulationContainer::updateSolutions() {
+LCSolverResult SimulationContainer::updateSolutions()
+{
     potentialSolver->solvePotential(v, q, geom1);
     return lcSolver.solve(q, v, geom1, simulationState);
 }

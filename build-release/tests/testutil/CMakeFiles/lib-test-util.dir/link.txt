@@ -1,0 +1,2 @@
+C:\mingw64\bin\ar.exe qc liblib-test-util.a "CMakeFiles/lib-test-util.dir/test-util.cpp.obj"
+C:\mingw64\bin\ranlib.exe liblib-test-util.a

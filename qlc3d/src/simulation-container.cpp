@@ -298,20 +298,20 @@ void SimulationContainer::runIteration()
                             &geom1,
                             &v,
                             &q);
-
-        CalculateNodalFreeEnergy(&tiltE,
-                                 &twistE,
-                                 &bendE,
-                                 &elasticE,
-                                 &thermoE,
-                                 &electricE,
-                                 &totalE,
-                                 simulationState.currentIteration(),
-                                 simulationState.currentTime().getTime(),
-                                 *lc,
-                                 &geom1,
-                                 &v,
-                                 &q);
+        if (std::fmod(simulationState.currentIteration(), simu->getSaveIter()) < 1.0e-09) // fmod between floating point number has an error
+            CalculateNodalFreeEnergy(&tiltE,
+                                     &twistE,
+                                     &bendE,
+                                     &elasticE,
+                                     &thermoE,
+                                     &electricE,
+                                     &totalE,
+                                     simulationState.currentIteration(),
+                                     simulationState.currentTime().getTime(),
+                                     *lc,
+                                     &geom1,
+                                     &v,
+                                     &q);
     }
 
     // CALCULATES Q-TENSOR AND POTENTIAL

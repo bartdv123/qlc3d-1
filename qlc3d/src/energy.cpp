@@ -1,6 +1,7 @@
 #include <energy.h>
 #include <math.h>
 #include <lc.h>
+#include <mesh.h>
 #include <geometry.h>
 #include <solutionvector.h>
 #include <util/logging.h>
@@ -459,4 +460,64 @@ void CalculateNodalFreeEnergy(SolutionVector *tiltE,
         } // end if domain1 element
 
     } // end element loop
+
+    // Smooth out the energy densities using energy convolution with a delta function that overlaps the node and its neighbours
+    // Connected node set for identifying neighbours
+    std::set<idx> connectedNodes;
+    std::vector<set<idx>> node_to_element;
+    // Averaged solution vectors with correct lengths
+    std::vector<double> tilt_E(tiltE->getnDoF());
+    std::vector<double> twist_E(twistE->getnDoF());
+    std::vector<double> bend_E(bendE->getnDoF());
+    std::vector<double> elastic_E(elasticE->getnDoF());
+    std::vector<double> thermo_E(thermoE->getnDoF());
+    std::vector<double> electric_E(electricE->getnDoF());
+    std::vector<double> total_E(totalE->getnDoF());
+    node_to_element = tets.gen_p_to_elem_return(node_to_element);
+    // Averaging: loop over all available nodes_id, based on node_id find connected elements, based on elements find connected nodeid and average
+    for (int nodeID = 1; nodeID < tiltE->getnDoF(); nodeID++)
+    {
+        connectedNodes.clear();
+
+        tets.findNodesConnectedToNode(tets, nodeID, connectedNodes, node_to_element);
+
+        if (!connectedNodes.empty())
+        {
+            double tiltSum = 0.0, twistSum = 0.0, bendSum = 0.0, elasticSum = 0.0;
+            double thermoSum = 0.0, electricSum = 0.0, totalSum = 0.0;
+
+            for (idx neighborID : connectedNodes)
+            {
+                tiltSum += tiltE->getValue(neighborID, 0);
+                twistSum += twistE->getValue(neighborID, 0);
+                bendSum += bendE->getValue(neighborID, 0);
+                elasticSum += elasticE->getValue(neighborID, 0);
+                thermoSum += thermoE->getValue(neighborID, 0);
+                electricSum += electricE->getValue(neighborID, 0);
+                totalSum += totalE->getValue(neighborID, 0);
+            }
+
+            int numNeighbors = connectedNodes.size();
+
+            tilt_E[nodeID] = tiltSum / numNeighbors;
+            twist_E[nodeID] = twistSum / numNeighbors;
+            bend_E[nodeID] = bendSum / numNeighbors;
+            elastic_E[nodeID] = elasticSum / numNeighbors;
+            thermo_E[nodeID] = thermoSum / numNeighbors;
+            electric_E[nodeID] = electricSum / numNeighbors;
+            total_E[nodeID] = totalSum / numNeighbors;
+        }
+    }
+
+    // Update the SolutionVector objects with the averaged values
+    for (int nodeID = 1; nodeID < tiltE->getnDoF(); nodeID++)
+    {
+        tiltE->setValue(nodeID, 0, tilt_E[nodeID]);
+        twistE->setValue(nodeID, 0, twist_E[nodeID]);
+        bendE->setValue(nodeID, 0, bend_E[nodeID]);
+        elasticE->setValue(nodeID, 0, elastic_E[nodeID]);
+        thermoE->setValue(nodeID, 0, thermo_E[nodeID]);
+        electricE->setValue(nodeID, 0, electric_E[nodeID]);
+        totalE->setValue(nodeID, 0, total_E[nodeID]);
+    }
 }

@@ -21,38 +21,45 @@
 
 // <editor-fold ImplicitLCSolver>
 ImplicitLCSolver::ImplicitLCSolver(const LC &lc, const SolverSettings &solverSettings, const Alignment &alignment) : lc(lc),
-  solverSettings(solverSettings),
-  alignment(alignment),
-  isChiral(lc.L4() != 0.0),
-  isSymmetricMatrix(lc.p0() == 0.0),
-  isThreeElasticConstants(lc.K11() != lc.K22() || lc.K11() != lc.K33()) {
+                                                                                                                     solverSettings(solverSettings),
+                                                                                                                     alignment(alignment),
+                                                                                                                     isChiral(lc.L4() != 0.0),
+                                                                                                                     isSymmetricMatrix(lc.p0() == 0.0),
+                                                                                                                     isThreeElasticConstants(lc.K11() != lc.K22() || lc.K11() != lc.K33())
+{
   Log::info("Creating steady state solver for Q-tensor");
 }
 
-bool ImplicitLCSolver::solveMatrixSystem(const SpaMtrix::IRCMatrix &Kmatrix, const SpaMtrix::Vector &r, SpaMtrix::Vector &x) const {
+bool ImplicitLCSolver::solveMatrixSystem(const SpaMtrix::IRCMatrix &Kmatrix, const SpaMtrix::Vector &r, SpaMtrix::Vector &x) const
+{
   // check that matrix and vector sizes match
-  if (Kmatrix.getNumRows() != r.getLength() || Kmatrix.getNumCols() != r.getLength() || Kmatrix.getNumCols() != x.getLength()) {
+  if (Kmatrix.getNumRows() != r.getLength() || Kmatrix.getNumCols() != r.getLength() || Kmatrix.getNumCols() != x.getLength())
+  {
     RUNTIME_ERROR("Matrix and vector sizes do not match");
   }
 
-  idx maxiter 	=  solverSettings.getQ_GMRES_Maxiter();
-  idx restart 	=  solverSettings.getQ_GMRES_Restart();
-  real toler    =  solverSettings.getQ_GMRES_Toler();
+  idx maxiter = solverSettings.getQ_GMRES_Maxiter();
+  idx restart = solverSettings.getQ_GMRES_Restart();
+  real toler = solverSettings.getQ_GMRES_Toler();
   SpaMtrix::IterativeSolvers solver(maxiter, restart, toler);
 
   bool converged;
   std::string method = "Unknown";
-  if (isSymmetricMatrix) {
+  if (isSymmetricMatrix)
+  {
     method = "PCG";
     SpaMtrix::DiagPreconditioner I(Kmatrix);
     converged = solver.pcg(Kmatrix, x, r, I);
-  } else {
+  }
+  else
+  {
     method = "GMRES";
     SpaMtrix::LUIncPreconditioner LU(Kmatrix);
     converged = solver.gmres(Kmatrix, x, r, LU);
   }
 
-  if (!converged) {
+  if (!converged)
+  {
     Log::warn("{} Solver did not converge in {} iterations to required tolerance {}. Tolerance achieved is {}.", method, solver.maxIter, toler, solver.toler);
   }
   return converged;
@@ -60,7 +67,8 @@ bool ImplicitLCSolver::solveMatrixSystem(const SpaMtrix::IRCMatrix &Kmatrix, con
 
 void ImplicitLCSolver::assembleLocalVolumeMatrix(const unsigned int indTet, double lK[20][20], double lL[20], unsigned int tetNodes[4], unsigned int *tetDofs,
                                                  GaussianQuadratureTet<11> shapes, const SolutionVector &q,
-                                                 const SolutionVector &v, const Geometry &geom, const LCSolverParams &params) {
+                                                 const SolutionVector &v, const Geometry &geom, const LCSolverParams &params)
+{
   memset(lK, 0., 20 * 20 * sizeof(double));
   memset(lL, 0., 20 * sizeof(double));
   Vec3 tetCoords[4];
@@ -84,7 +92,8 @@ void ImplicitLCSolver::assembleLocalVolumeMatrix(const unsigned int indTet, doub
   shapes.sampleAllY(qNodal, q1y, q2y, q3y, q4y, q5y);
   shapes.sampleAllZ(qNodal, q1z, q2z, q3z, q4z, q5z);
 
-  for (; shapes.hasNextPoint(); shapes.nextPoint()) {
+  for (; shapes.hasNextPoint(); shapes.nextPoint())
+  {
     double q1, q2, q3, q4, q5;
     double Vx, Vy, Vz;
     shapes.sampleAll(qNodal, q1, q2, q3, q4, q5);
@@ -96,24 +105,27 @@ void ImplicitLCSolver::assembleLocalVolumeMatrix(const unsigned int indTet, doub
 
     LcEnergyTerms::assembleElasticL1(lK, lL, shapes, tetDeterminant, q1x, q1y, q1z, q2x, q2y, q2z, q3x, q3y, q3z, q4x, q4y, q4z, q5x, q5y, q5z, params.L1);
 
-    if (isThreeElasticConstants) {
+    if (isThreeElasticConstants)
+    {
       LcEnergyTerms::assembleThreeElasticConstants(lK, lL, shapes, tetDeterminant, q1, q2, q3, q4, q5, q1x, q1y, q1z,
                                                    q2x, q2y, q2z, q3x, q3y, q3z, q4x, q4y, q4z, q5x, q5y, q5z,
                                                    params.L2, params.L3, params.L6);
     }
 
-    if (isChiral) {
+    if (isChiral)
+    {
       LcEnergyTerms::assembleChiralTerms(lK, lL, shapes, tetDeterminant,
                                          q1, q2, q3, q4, q5,
                                          q1x, q1y, q1z,
-                                          q2x, q2y, q2z,
-                                          q3x, q3y, q3z,
-                                          q4x, q4y, q4z,
-                                          q5x, q5y, q5z,
+                                         q2x, q2y, q2z,
+                                         q3x, q3y, q3z,
+                                         q4x, q4y, q4z,
+                                         q5x, q5y, q5z,
                                          params.L4);
     }
 
-    if (Vx != 0.0 || Vy != 0.0 || Vz != 0.0) {
+    if (Vx != 0.0 || Vy != 0.0 || Vz != 0.0)
+    {
       LcEnergyTerms::assembleDielectric(lL, shapes, tetDeterminant, Vx, Vy, Vz, params.deleps);
     }
   }
@@ -123,7 +135,8 @@ void ImplicitLCSolver::assembleLocalWeakAnchoringMatrix(unsigned int indTri, dou
                                                         unsigned int triNodes[3], unsigned int triDofs[3],
                                                         GaussianQuadratureTri<7> shapes, const SolutionVector &q,
                                                         const Geometry &geom, const Surface &surface,
-                                                        double surfaceOrder) {
+                                                        double surfaceOrder)
+{
   memset(lK, 0., 15 * 15 * sizeof(double));
   memset(lL, 0., 15 * sizeof(double));
 
@@ -138,12 +151,15 @@ void ImplicitLCSolver::assembleLocalWeakAnchoringMatrix(unsigned int indTri, dou
 
   Vec3 vec1[3];
   Vec3 vec2[3];
-  if (surface.usesSurfaceNormal()) {
+  if (surface.usesSurfaceNormal())
+  {
     assert(surface.getK1() == 0.);
     vec2[0] = geom.getNodeNormal(triNodes[0]);
     vec2[1] = geom.getNodeNormal(triNodes[1]);
     vec2[2] = geom.getNodeNormal(triNodes[2]);
-  } else {
+  }
+  else
+  {
     // use the principal axes of the element anchoring at each node
     vec1[0] = surface.getV1();
     vec1[1] = surface.getV1();
@@ -159,12 +175,14 @@ void ImplicitLCSolver::assembleLocalWeakAnchoringMatrix(unsigned int indTri, dou
   qlc3d::TTensor qNodal[3];
   q.loadQtensorValues(triNodes, triNodes + 3, qNodal);
 
-  for (; shapes.hasNextPoint(); shapes.nextPoint()) {
+  for (; shapes.hasNextPoint(); shapes.nextPoint())
+  {
     double q1, q2, q3, q4, q5;
     shapes.sampleAll(qNodal, q1, q2, q3, q4, q5);
 
     Vec3 v1, v2;
-    if (!surface.usesSurfaceNormal()) {
+    if (!surface.usesSurfaceNormal())
+    {
       shapes.sample(vec1, v1);
     }
     shapes.sample(vec2, v2);
@@ -173,44 +191,51 @@ void ImplicitLCSolver::assembleLocalWeakAnchoringMatrix(unsigned int indTri, dou
   }
 }
 
-void ImplicitLCSolver::addToGlobalMatrix(double* lK, double* lL, const SolutionVector &q,
-                                         const unsigned int* elemNodes, int elemNodeCount) {
-  //const int elemNodeCount = 4;
+void ImplicitLCSolver::addToGlobalMatrix(double *lK, double *lL, const SolutionVector &q,
+                                         const unsigned int *elemNodes, int elemNodeCount)
+{
+  // const int elemNodeCount = 4;
   idx npLC = q.getnDoF();
-  for (int i = 0; i < 5 * elemNodeCount; i++) {
+  for (int i = 0; i < 5 * elemNodeCount; i++)
+  {
     idx ri = elemNodes[i % elemNodeCount] + npLC * (i / elemNodeCount);
     idx eqr = q.getEquNode(ri);
 
-    if (eqr == NOT_AN_INDEX) { // this row is fixed, so doesn't even exist in the system
+    if (eqr == NOT_AN_INDEX)
+    { // this row is fixed, so doesn't even exist in the system
       continue;
     }
 
-    #pragma omp atomic
+#pragma omp atomic
     (*L)[eqr] += lL[i];
-    for (int j = 0 ; j < 5 * elemNodeCount ; j++) { // LOOP OVER COLUMNS
+    for (int j = 0; j < 5 * elemNodeCount; j++)
+    { // LOOP OVER COLUMNS
       idx rj = elemNodes[j % elemNodeCount] + npLC * (j / elemNodeCount);
       idx eqc = q.getEquNode(rj);
 
       // Note: we can simply ignore fixed columns as they correspond to fixed zeroes in the RHS vector L,
       // so that their contribution to other rows in L would be zero anyway. We only set the free rows/columns
       // to the global matrix
-      if (eqc != NOT_AN_INDEX) { // it's free
+      if (eqc != NOT_AN_INDEX)
+      { // it's free
 
-        double* value = K->getValuePtr(eqr, eqc);
+        double *value = K->getValuePtr(eqr, eqc);
 
-        if (value == nullptr) {
+        if (value == nullptr)
+        {
           RUNTIME_ERROR(fmt::format("Value at row {} and column {} is not found in the matrix for LC solution", eqr, eqc));
         }
 
-        // [i][j] = j + 5 * elemNodeCount * i
-        #pragma omp atomic
+// [i][j] = j + 5 * elemNodeCount * i
+#pragma omp atomic
         *value += lK[j + 5 * elemNodeCount * i];
       }
     }
   }
 }
 
-void ImplicitLCSolver::assembleMatrixSystemVolumeTerms(const SolutionVector &q, const SolutionVector &v, const Geometry &geom, const LCSolverParams &params) {
+void ImplicitLCSolver::assembleMatrixSystemVolumeTerms(const SolutionVector &q, const SolutionVector &v, const Geometry &geom, const LCSolverParams &params)
+{
   const int elementNodeCount = 4;
 
   const unsigned int elementCount = geom.getTetrahedra().getnElements();
@@ -220,9 +245,11 @@ void ImplicitLCSolver::assembleMatrixSystemVolumeTerms(const SolutionVector &q, 
   idx tetNodes[elementNodeCount];
   idx tetDofs[elementNodeCount];
 
-  #pragma omp parallel for private(lK, lL, tetNodes, tetDofs) schedule(guided)
-  for (unsigned int indTet = 0; indTet < elementCount; indTet++) {
-    if (tets.getMaterialNumber(indTet) != MAT_DOMAIN1) {
+#pragma omp parallel for private(lK, lL, tetNodes, tetDofs) schedule(guided)
+  for (unsigned int indTet = 0; indTet < elementCount; indTet++)
+  {
+    if (tets.getMaterialNumber(indTet) != MAT_DOMAIN1)
+    {
       continue;
     }
     tets.loadNodes(indTet, tetNodes);
@@ -235,7 +262,8 @@ void ImplicitLCSolver::assembleMatrixSystemVolumeTerms(const SolutionVector &q, 
 }
 
 void ImplicitLCSolver::assembleMatrixSystemWeakAnchoring(const SolutionVector &q, const Geometry &geom,
-                                                         const LCSolverParams &params) {
+                                                         const LCSolverParams &params)
+{
   const int elementNodeCount = 3;
 
   auto &tris = geom.getTriangles();
@@ -247,14 +275,16 @@ void ImplicitLCSolver::assembleMatrixSystemWeakAnchoring(const SolutionVector &q
 
   std::unordered_map<unsigned int, Surface> weakSurfaces = alignment.getWeakSurfacesByFixLcNumber();
 
-  #pragma omp parallel for private(lK, lL, triNodes, triDofs) schedule(guided)
-  for (unsigned int indTri = 0; indTri < tris.getnElements(); indTri++) {
+#pragma omp parallel for private(lK, lL, triNodes, triDofs) schedule(guided)
+  for (unsigned int indTri = 0; indTri < tris.getnElements(); indTri++)
+  {
     auto shapes = gaussianQuadratureTri4thOrder();
     unsigned int fixLcNumber = tris.getFixLCNumber(indTri);
 
     // check if a weak surface exists by the FixLC number
     auto weakSurface = weakSurfaces.find(fixLcNumber);
-    if (weakSurface == weakSurfaces.end()) {
+    if (weakSurface == weakSurfaces.end())
+    {
       continue;
     }
     tris.loadNodes(indTri, triNodes);
@@ -268,22 +298,25 @@ void ImplicitLCSolver::assembleMatrixSystemWeakAnchoring(const SolutionVector &q
   }
 }
 
-void ImplicitLCSolver::assembleMatrixSystem(const SolutionVector &q, const SolutionVector &v, const Geometry &geom, const LCSolverParams &params) {
+void ImplicitLCSolver::assembleMatrixSystem(const SolutionVector &q, const SolutionVector &v, const Geometry &geom, const LCSolverParams &params)
+{
   *(K) = 0.;
   *(L) = 0.;
   *(X) = 0.;
 
-  assembleMatrixSystemVolumeTerms(q,v, geom, params);
+  assembleMatrixSystemVolumeTerms(q, v, geom, params);
 
-  if (alignment.weakSurfacesExist()) {
+  if (alignment.weakSurfacesExist())
+  {
     assembleMatrixSystemWeakAnchoring(q, geom, params);
   }
 }
 
-
-double ImplicitLCSolver::maxAbs(const SpaMtrix::Vector &v) const {
+double ImplicitLCSolver::maxAbs(const SpaMtrix::Vector &v) const
+{
   double max = 0.0;
-  for (idx i = 0; i < v.getLength(); i++) {
+  for (idx i = 0; i < v.getLength(); i++)
+  {
     max = std::max(max, fabs(v[i]));
   }
   return max;
@@ -294,16 +327,16 @@ double ImplicitLCSolver::maxAbs(const SpaMtrix::Vector &v) const {
 // <editor-fold SteadyStateLCSolver>
 SteadyStateLCSolver::~SteadyStateLCSolver() = default;
 
-SteadyStateLCSolver::SteadyStateLCSolver(const LC &lc, const SolverSettings &solverSettings, const Alignment &alignment) :
-        ImplicitLCSolver(lc, solverSettings, alignment),
-        A{lc.A()}, B{lc.B()}, C{lc.C()},
-        L1{lc.L1()}, L2{lc.L2()}, L3{lc.L3()}, L4{lc.L4()}, L6{lc.L6()},
-        deleps{lc.deleps()}
-        {
+SteadyStateLCSolver::SteadyStateLCSolver(const LC &lc, const SolverSettings &solverSettings, const Alignment &alignment) : ImplicitLCSolver(lc, solverSettings, alignment),
+                                                                                                                           A{lc.A()}, B{lc.B()}, C{lc.C()},
+                                                                                                                           L1{lc.L1()}, L2{lc.L2()}, L3{lc.L3()}, L4{lc.L4()}, L6{lc.L6()},
+                                                                                                                           deleps{lc.deleps()}
+{
   Log::info("Creating steady state solver for Q-tensor with isThreeElasticConstants={}, isChiral={}, isSymmetricMatrix={}", isThreeElasticConstants, isChiral, isSymmetricMatrix);
 }
 
-LCSolverResult SteadyStateLCSolver::solve(SolutionVector &q, const SolutionVector &v, const Geometry &geom, SimulationState &simulationState) {
+LCSolverResult SteadyStateLCSolver::solve(SolutionVector &q, const SolutionVector &v, const Geometry &geom, SimulationState &simulationState)
+{
   initialiseMatrixSystem(q, geom, 0);
 
   LCSolverParams params = {A, B, C, L1, L2, L3, L4, L6, deleps, simulationState.dt(), 0, lc.S0()}; // todo: this is replication
@@ -324,17 +357,18 @@ LCSolverResult SteadyStateLCSolver::solve(SolutionVector &q, const SolutionVecto
   q.incrementFreeDofs(*X, -1.0); // decrement the result of the solver from the Q-tensor
 
   return {
-    LCSolverType::STEADY_STATE,
-    1,
-    maxAbs(*X),
-    solverConverged,
-    false, // only a single iteration is always run
-    {assemblyStopwatch.elapsedSeconds(), solverStopwatch.elapsedSeconds()}
-  };
+      LCSolverType::STEADY_STATE,
+      1,
+      maxAbs(*X),
+      solverConverged,
+      false, // only a single iteration is always run
+      {assemblyStopwatch.elapsedSeconds(), solverStopwatch.elapsedSeconds()}};
 }
 
-void SteadyStateLCSolver::initialiseMatrixSystem(const SolutionVector &q, const Geometry &geom, double dt) {
-  if (K != nullptr) {
+void SteadyStateLCSolver::initialiseMatrixSystem(const SolutionVector &q, const Geometry &geom, double dt)
+{
+  if (K != nullptr)
+  {
     return;
   }
 
@@ -348,35 +382,47 @@ void SteadyStateLCSolver::initialiseMatrixSystem(const SolutionVector &q, const 
 
 // <editor-fold TimeSteppingLCSolver>
 
-TimeSteppingLCSolver::TimeSteppingLCSolver(const LC &lc, const SolverSettings &solverSettings, double maxError, const Alignment &alignment, int maxNewtonIterations) :
-ImplicitLCSolver(lc, solverSettings, alignment), maxError(maxError), maxNewtonIterations(maxNewtonIterations) {
+TimeSteppingLCSolver::TimeSteppingLCSolver(const LC &lc, const SolverSettings &solverSettings, double maxError, const Alignment &alignment, int maxNewtonIterations) : ImplicitLCSolver(lc, solverSettings, alignment), maxError(maxError), maxNewtonIterations(maxNewtonIterations)
+{
   Log::info("Creating time stepping solver for Q-tensor, isTreeElasticConstants={}, isSymmetricMatrix={}, maxNewtonIterations={}",
             isThreeElasticConstants, isSymmetricMatrix, maxNewtonIterations);
 }
 
-bool isFixedNode(idx i) {
+bool isFixedNode(idx i)
+{
   return i == NOT_AN_INDEX;
 }
 
-void addToGlobalMassMatrix(const double lK[4][4], idx tetDofs[4], SpaMtrix::IRCMatrix &M) {
+void addToGlobalMassMatrix(const double lK[4][4], idx tetDofs[4], SpaMtrix::IRCMatrix &M)
+{
   const unsigned int numFreeNodes = M.getNumRows() / 5;
 
-  for (idx i = 0; i < 4; i++) {
+  for (idx i = 0; i < 4; i++)
+  {
     const idx iDof = tetDofs[i];
-    if (isFixedNode(iDof)) { continue; } // this row should not even exist in the matrix
+    if (isFixedNode(iDof))
+    {
+      continue;
+    } // this row should not even exist in the matrix
 
-    for (idx j = 0; j < 4; j++) {
+    for (idx j = 0; j < 4; j++)
+    {
       const idx jDof = tetDofs[j];
-      if (isFixedNode(jDof)) { continue; }
+      if (isFixedNode(jDof))
+      {
+        continue;
+      }
 
-      for (int dof = 0; dof < 5; dof ++) {
+      for (int dof = 0; dof < 5; dof++)
+      {
         M.sparse_add(iDof + dof * numFreeNodes, jDof + dof * numFreeNodes, lK[i][j]);
       }
     }
   }
 }
 
-void assembleElementMassMatrix(double lK[4][4], idx tetNodes[4], double tetDeterminant, const Geometry &geom, GaussianQuadratureTet<11> &shapes) {
+void assembleElementMassMatrix(double lK[4][4], idx tetNodes[4], double tetDeterminant, const Geometry &geom, GaussianQuadratureTet<11> &shapes)
+{
   memset(lK, 0, 4 * 4 * sizeof(double));
   Vec3 coordinates[4];
   geom.getCoordinates().loadCoordinates(tetNodes, tetNodes + 4, coordinates);
@@ -387,17 +433,21 @@ void assembleElementMassMatrix(double lK[4][4], idx tetNodes[4], double tetDeter
 
   shapes.initialiseElement(coordinates, tetDeterminant);
 
-  for (; shapes.hasNextPoint(); shapes.nextPoint()) {
+  for (; shapes.hasNextPoint(); shapes.nextPoint())
+  {
     const double mul = shapes.weight() * tetDeterminant;
-    for (idx i = 0; i < 4; i++) {
-      for (idx j = 0; j < 4; j++) {
+    for (idx i = 0; i < 4; i++)
+    {
+      for (idx j = 0; j < 4; j++)
+      {
         lK[i][j] += mul * shapes.N(i) * shapes.N(j);
       }
     }
   }
 }
 
-void assembleGlobalMassMatrix(SpaMtrix::IRCMatrix &M, const Geometry &geom, const SolutionVector &q) {
+void assembleGlobalMassMatrix(SpaMtrix::IRCMatrix &M, const Geometry &geom, const SolutionVector &q)
+{
   GaussianQuadratureTet<11> shapes = gaussQuadratureTet4thOrder();
   const Mesh tetMesh = geom.getTetrahedra();
   const idx tetCount = tetMesh.getnElements();
@@ -405,8 +455,10 @@ void assembleGlobalMassMatrix(SpaMtrix::IRCMatrix &M, const Geometry &geom, cons
   idx tetNodes[4];
   idx tetDofs[4];
 
-  for (idx tetIndex = 0; tetIndex < tetCount; tetIndex++) {
-    if (tetMesh.getMaterialNumber(tetIndex) != MAT_DOMAIN1) {
+  for (idx tetIndex = 0; tetIndex < tetCount; tetIndex++)
+  {
+    if (tetMesh.getMaterialNumber(tetIndex) != MAT_DOMAIN1)
+    {
       continue;
     }
 
@@ -419,8 +471,10 @@ void assembleGlobalMassMatrix(SpaMtrix::IRCMatrix &M, const Geometry &geom, cons
   }
 }
 
-void TimeSteppingLCSolver::initialiseMatrixSystem(const SolutionVector &q, const Geometry &geom) {
-  if (K != nullptr) {
+void TimeSteppingLCSolver::initialiseMatrixSystem(const SolutionVector &q, const Geometry &geom)
+{
+  if (K != nullptr)
+  {
     return;
   }
   const idx numFreeNodes = q.getnFreeNodes();
@@ -457,7 +511,8 @@ void modifySystemForTimeStepping(SpaMtrix::Vector &r,
                                  const SpaMtrix::Vector &f1,
                                  const SpaMtrix::Vector &f2,
                                  const SpaMtrix::IRCMatrix &M,
-                                 double timeMultiplier) {
+                                 double timeMultiplier)
+{
 
   assert(r.getLength() == q1.getLength());
   assert(r.getLength() == q2.getLength());
@@ -482,9 +537,11 @@ void modifySystemForTimeStepping(SpaMtrix::Vector &r,
 }
 
 LCSolverResult TimeSteppingLCSolver::solve(SolutionVector &q, const SolutionVector &v, const Geometry &geom,
-                                           SimulationState &simulationState) {
+                                           SimulationState &simulationState)
+{
 
-  if (K == nullptr) {
+  if (K == nullptr)
+  {
     initialiseMatrixSystem(q, geom);
   }
 
@@ -507,13 +564,15 @@ LCSolverResult TimeSteppingLCSolver::solve(SolutionVector &q, const SolutionVect
   Stopwatch assemblyStopwatch;
   Stopwatch solverStopwatch;
 
-  do {
+  do
+  {
     q.copyFreeDofsTo(q2); // make sure q2 is updated with the latest q values from previous iteration
 
     assemblyStopwatch.start();
     assembleMatrixSystem(q, v, geom, params); // updates K and L using q2
 
-    if (isFirstRun) {
+    if (isFirstRun)
+    {
       *f_prev = *L;
       isFirstRun = false;
     }
@@ -527,11 +586,14 @@ LCSolverResult TimeSteppingLCSolver::solve(SolutionVector &q, const SolutionVect
     solverStopwatch.stop();
     maxDq = maxAbs(*X);
 
-    if (iter == 0) {
+    if (iter == 0)
+    {
       firstDq = maxDq;
       Log::enableInfoNewline(false);
       Log::info("Newton iterations. dQ={:.4e}", maxDq);
-    } else {
+    }
+    else
+    {
       Log::append_info(",{} {:.4e}", iter == maxNewtonIterations ? "|" : "", maxDq);
     }
 
@@ -543,7 +605,8 @@ LCSolverResult TimeSteppingLCSolver::solve(SolutionVector &q, const SolutionVect
   } while (maxDq > maxError && iter < maxNewtonIterations);
   Log::enableInfoNewline(true);
 
-  if (iter >= maxNewtonIterations) {
+  if (iter >= maxNewtonIterations)
+  {
     Log::warn("Newton iterations: max iterations {} reached", maxNewtonIterations);
   }
 
@@ -558,12 +621,11 @@ LCSolverResult TimeSteppingLCSolver::solve(SolutionVector &q, const SolutionVect
   Log::append_info(". dQ/dt={:.4e}", maxDqdt);
 
   return {
-    LCSolverType::TIME_STEPPING,
-    iter,
-    firstDq,
-    solverConverged,
-    iter >= maxNewtonIterations,
-    {assemblyStopwatch.elapsedSeconds(), solverStopwatch.elapsedSeconds()}
-  };
+      LCSolverType::TIME_STEPPING,
+      iter,
+      firstDq, // was first dq before
+      solverConverged,
+      iter >= maxNewtonIterations,
+      {assemblyStopwatch.elapsedSeconds(), solverStopwatch.elapsedSeconds()}};
 }
 // </editor-fold>

@@ -142,13 +142,13 @@ namespace vtkIOFun
 
         // Write out different energy contributions
 
-        writeEnergy(os, coordinates.size(), "splay_energy", tiltE);
-        writeEnergy(os, coordinates.size(), "twist_energy", twistE);
-        writeEnergy(os, coordinates.size(), "bend_energy", bendE);
-        writeEnergy(os, coordinates.size(), "elastic_energy", elasticE);
-        writeEnergy(os, coordinates.size(), "thermotropic_energy", thermoE);
-        writeEnergy(os, coordinates.size(), "electric_energy", electricE);
-        writeEnergy(os, coordinates.size(), "total_energy", totalE);
+        writeEnergy(os, coordinates.size(), "splay_energy_density", tiltE);
+        writeEnergy(os, coordinates.size(), "twist_energy_density", twistE);
+        writeEnergy(os, coordinates.size(), "bend_energy_density", bendE);
+        writeEnergy(os, coordinates.size(), "elastic_energy_density", elasticE);
+        writeEnergy(os, coordinates.size(), "thermotropic_energy_density", thermoE);
+        writeEnergy(os, coordinates.size(), "electric_energy_density", electricE);
+        writeEnergy(os, coordinates.size(), "total_energy_density", totalE);
 
         os.close();
     }

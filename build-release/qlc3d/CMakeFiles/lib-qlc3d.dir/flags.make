@@ -3,13 +3,13 @@
 
 # compile C with C:/mingw64/bin/gcc.exe
 # compile CXX with C:/mingw64/bin/c++.exe
-C_DEFINES = -DFMT_LOCALE -DQLC3D_SHA=\"7d33c16\" -DUSES_OPENMP
+C_DEFINES = -DFMT_LOCALE -DQLC3D_SHA=\"df4b3b4\" -DUSES_OPENMP
 
 C_INCLUDES = @CMakeFiles/lib-qlc3d.dir/includes_C.rsp
 
 C_FLAGS = -O3 -DNDEBUG -Wa,-mbig-obj
 
-CXX_DEFINES = -DFMT_LOCALE -DQLC3D_SHA=\"7d33c16\" -DUSES_OPENMP
+CXX_DEFINES = -DFMT_LOCALE -DQLC3D_SHA=\"df4b3b4\" -DUSES_OPENMP
 
 CXX_INCLUDES = @CMakeFiles/lib-qlc3d.dir/includes_CXX.rsp
 

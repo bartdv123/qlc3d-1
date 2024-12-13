@@ -292,6 +292,8 @@ void SettingsReader::readAlignment(Reader &reader) {
             } else if (reader.isValueArrayOfStrings(key)) {
               // if all easy angles values are strings, then it is an expression
               auto easyAngles = reader.getValueByKey<std::vector<std::string>>(key);
+              
+              std::cout << "DEBUG: Reading Easy Angles: " << easyAngles[0] << ", " << easyAngles[1] << std::endl;
               auto tiltExpression = easyAngles[0];
               auto twistExpression = easyAngles[1];
 

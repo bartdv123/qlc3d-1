@@ -275,7 +275,7 @@ void CalculateNodalFreeEnergy(SolutionVector *tiltE,
                               SolutionVector *v,
                               SolutionVector *q)
 {
-    Log::info("Splitting free energy in nodal contributions.");
+    Log::info("Splitting free energy density in nodal contributions.");
 
     using namespace Energy;
     init_shape();
@@ -461,11 +461,12 @@ void CalculateNodalFreeEnergy(SolutionVector *tiltE,
 
     } // end element loop
 
-    // Smooth out the energy densities using energy convolution with a delta function that overlaps the node and its neighbours
+    // Smooth out the rugged energy landscape using a 1/nodes*convolution that covers a node and its neighbours
+
     // Connected node set for identifying neighbours
     std::set<idx> connectedNodes;
     std::vector<set<idx>> node_to_element;
-    // Averaged solution vectors with correct lengths
+
     std::vector<double> tilt_E(tiltE->getnDoF());
     std::vector<double> twist_E(twistE->getnDoF());
     std::vector<double> bend_E(bendE->getnDoF());
@@ -474,7 +475,7 @@ void CalculateNodalFreeEnergy(SolutionVector *tiltE,
     std::vector<double> electric_E(electricE->getnDoF());
     std::vector<double> total_E(totalE->getnDoF());
     node_to_element = tets.gen_p_to_elem_return(node_to_element);
-    // Averaging: loop over all available nodes_id, based on node_id find connected elements, based on elements find connected nodeid and average
+
     for (int nodeID = 1; nodeID < tiltE->getnDoF(); nodeID++)
     {
         connectedNodes.clear();
@@ -509,7 +510,7 @@ void CalculateNodalFreeEnergy(SolutionVector *tiltE,
         }
     }
 
-    // Update the SolutionVector objects with the averaged values
+    // Update the SolutionVector objects with the mean field convoluted values
     for (int nodeID = 1; nodeID < tiltE->getnDoF(); nodeID++)
     {
         tiltE->setValue(nodeID, 0, tilt_E[nodeID]);

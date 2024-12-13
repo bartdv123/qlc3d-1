@@ -486,13 +486,13 @@ bool RegularGrid::writeVTKGrid(const std::filesystem::path &fileName,
   vtkIOFun::writeScalarData(fid, "Potential", regPot);
   vtkIOFun::writeScalarData(fid, "S", regS);
   vtkIOFun::writeVectorData(fid, "Director", regN);
-  vtkIOFun::writeScalarData(fid, "Splay_Energy", regTiltE);
-  vtkIOFun::writeScalarData(fid, "Twist_Energy", regTwistE);
-  vtkIOFun::writeScalarData(fid, "Bend_Energy", regBendE);
-  vtkIOFun::writeScalarData(fid, "Elastic_Energy", regElasticE);
-  vtkIOFun::writeScalarData(fid, "Thermotropic_Energy", regThermoE);
-  vtkIOFun::writeScalarData(fid, "Electric_Energy", regElectricE);
-  vtkIOFun::writeScalarData(fid, "Total_Free_Energy", regTotalE);
+  vtkIOFun::writeScalarData(fid, "Splay_Energy_Density", regTiltE);
+  vtkIOFun::writeScalarData(fid, "Twist_Energy_Density", regTwistE);
+  vtkIOFun::writeScalarData(fid, "Bend_Energy_Density", regBendE);
+  vtkIOFun::writeScalarData(fid, "Elastic_Energy_Density", regElasticE);
+  vtkIOFun::writeScalarData(fid, "Thermotropic_Energy_Density", regThermoE);
+  vtkIOFun::writeScalarData(fid, "Electric_Energy_Density", regElectricE);
+  vtkIOFun::writeScalarData(fid, "Total_Free_Energy_Density", regTotalE);
 
   fid.close();
   return true;

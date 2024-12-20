@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d
+CMAKE_SOURCE_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release
+CMAKE_BINARY_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release"
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/cpp-test.dir/depend.make
@@ -73,303 +73,303 @@ tests/CMakeFiles/cpp-test.dir/codegen:
 
 tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/cpp-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/cpp-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\cpp-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\cpp-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\cpp-test.cpp > CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\cpp-test.cpp" > CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/cpp-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\cpp-test.cpp -o CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\cpp-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\cpp-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/configuration-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/configuration-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\configuration-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\configuration-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\configuration-tests.cpp > CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\configuration-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/configuration-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\configuration-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\configuration-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\configuration-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/math-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/math-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\math-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\math-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\math-tests.cpp > CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\math-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/math-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\math-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\math-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\math-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/meshrefinement-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/meshrefinement-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\meshrefinement-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\meshrefinement-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\meshrefinement-test.cpp > CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\meshrefinement-test.cpp" > CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/meshrefinement-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\meshrefinement-test.cpp -o CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\meshrefinement-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\meshrefinement-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/initial-lc-orientation-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/initial-lc-orientation-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\initial-lc-orientation-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\initial-lc-orientation-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\initial-lc-orientation-tests.cpp > CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\initial-lc-orientation-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/initial-lc-orientation-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\initial-lc-orientation-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\initial-lc-orientation-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\initial-lc-orientation-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/init-events-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/init-events-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\init-events-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\init-events-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\init-events-tests.cpp > CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\init-events-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/init-events-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\init-events-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\init-events-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\init-events-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/meshio-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/meshio-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshio-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshio-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshio-tests.cpp > CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshio-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/meshio-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshio-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshio-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\meshio-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/reader-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/reader-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\reader-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\reader-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\reader-test.cpp > CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\reader-test.cpp" > CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/reader-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\reader-test.cpp -o CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\reader-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\reader-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/vtk-unstructured-grid-writer-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/vtk-unstructured-grid-writer-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp > CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/vtk-unstructured-grid-writer-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\vtk-unstructured-grid-writer-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\vtk-unstructured-grid-writer-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/gmsh-read-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/gmsh-read-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\gmsh-read-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\gmsh-read-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\gmsh-read-test.cpp > CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\gmsh-read-test.cpp" > CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/gmsh-read-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\gmsh-read-test.cpp -o CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\gmsh-read-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\gmsh-read-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/meshreader-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/meshreader-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshreader-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshreader-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshreader-test.cpp > CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshreader-test.cpp" > CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/meshreader-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\meshreader-test.cpp -o CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\meshreader-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\meshreader-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/io/result-output-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/io/result-output-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\result-output-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\result-output-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\result-output-test.cpp > CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\result-output-test.cpp" > CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/io/result-output-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\io\result-output-test.cpp -o CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\io\result-output-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\io\result-output-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/geom/geom-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/geom/geom-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\geom\geom-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\geom\geom-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\geom\geom-tests.cpp > CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\geom\geom-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/geom/geom-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\geom\geom-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\geom\geom-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\geom\geom-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/potential/potential-solver-test.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/potential/potential-solver-test.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\potential\potential-solver-test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\potential\potential-solver-test.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\potential\potential-solver-test.cpp > CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\potential\potential-solver-test.cpp" > CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/potential/potential-solver-test.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\potential\potential-solver-test.cpp -o CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\potential\potential-solver-test.cpp" -o CMakeFiles\cpp-test.dir\cpp\potential\potential-solver-test.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/fe/gaussian-integration-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/fe/gaussian-integration-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\fe\gaussian-integration-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\fe\gaussian-integration-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\fe\gaussian-integration-tests.cpp > CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\fe\gaussian-integration-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/fe/gaussian-integration-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\fe\gaussian-integration-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\fe\gaussian-integration-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\fe\gaussian-integration-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/lc/lc-solver-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/lc/lc-solver-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\lc\lc-solver-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\lc\lc-solver-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\lc\lc-solver-tests.cpp > CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\lc\lc-solver-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/lc/lc-solver-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\lc\lc-solver-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\lc\lc-solver-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\lc\lc-solver-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/adaptive-time-step-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/adaptive-time-step-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\adaptive-time-step-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\adaptive-time-step-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\adaptive-time-step-tests.cpp > CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\adaptive-time-step-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/adaptive-time-step-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\adaptive-time-step-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\adaptive-time-step-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\adaptive-time-step-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/alignment-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/alignment-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\alignment-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\alignment-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\alignment-tests.cpp > CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\alignment-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/alignment-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\alignment-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\alignment-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\alignment-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/expression-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/expression-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\expression-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\expression-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\expression-tests.cpp > CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\expression-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/expression-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\expression-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\expression-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\expression-tests.cpp.s
 
 tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/flags.make
 tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/includes_CXX.rsp
-tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/tests/cpp/reader-tests.cpp
+tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/tests/cpp/reader-tests.cpp
 tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj: tests/CMakeFiles/cpp-test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\reader-tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.obj -MF CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.obj.d -o CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\reader-tests.cpp"
 
 tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\reader-tests.cpp > CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\reader-tests.cpp" > CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.i
 
 tests/CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp-test.dir/cpp/reader-tests.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests\cpp\reader-tests.cpp -o CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests\cpp\reader-tests.cpp" -o CMakeFiles\cpp-test.dir\cpp\reader-tests.cpp.s
 
 # Object files for target cpp-test
 cpp__test_OBJECTS = \
@@ -425,18 +425,18 @@ tests/cpp-test.exe: extern/fmt-8.1.1/libfmt.a
 tests/cpp-test.exe: tests/CMakeFiles/cpp-test.dir/linkLibs.rsp
 tests/cpp-test.exe: tests/CMakeFiles/cpp-test.dir/objects1.rsp
 tests/cpp-test.exe: tests/CMakeFiles/cpp-test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable cpp-test.exe"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\cpp-test.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable cpp-test.exe"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\cpp-test.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/cpp-test.dir/build: tests/cpp-test.exe
 .PHONY : tests/CMakeFiles/cpp-test.dir/build
 
 tests/CMakeFiles/cpp-test.dir/clean:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests && $(CMAKE_COMMAND) -P CMakeFiles\cpp-test.dir\cmake_clean.cmake
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\tests && $(CMAKE_COMMAND) -P CMakeFiles\cpp-test.dir\cmake_clean.cmake
 .PHONY : tests/CMakeFiles/cpp-test.dir/clean
 
 tests/CMakeFiles/cpp-test.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Public\Public_desktop\qlc3d_new\qlc3d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\tests C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\tests\CMakeFiles\cpp-test.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\tests" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\tests" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\tests\CMakeFiles\cpp-test.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : tests/CMakeFiles/cpp-test.dir/depend
 

@@ -345,7 +345,8 @@ void SimulationContainer::postSimulationTasks()
 {
     simulationState.state(RunningState::COMPLETED);
     resultOutput.writeResults(*geometries.geom, v, q, tiltE, twistE, bendE, elasticE, thermoE, electricE, totalE, simulationState);
-}
+    
+    }
 
 const SimulationState &SimulationContainer::currentState() const
 {

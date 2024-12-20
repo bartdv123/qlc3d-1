@@ -56,23 +56,13 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d
+CMAKE_SOURCE_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release
+CMAKE_BINARY_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release"
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	"C:\Program Files\CMake\bin\ctest.exe" --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -141,9 +131,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -235,32 +225,6 @@ qlc3d/fast:
 	$(MAKE) $(MAKESILENT) -f qlc3d\CMakeFiles\qlc3d.dir\build.make qlc3d/CMakeFiles/qlc3d.dir/build
 .PHONY : qlc3d/fast
 
-#=============================================================================
-# Target rules for targets named cpp-test
-
-# Build rule for target.
-cpp-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 cpp-test
-.PHONY : cpp-test
-
-# fast build rule for target.
-cpp-test/fast:
-	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\cpp-test.dir\build.make tests/CMakeFiles/cpp-test.dir/build
-.PHONY : cpp-test/fast
-
-#=============================================================================
-# Target rules for targets named lib-test-util
-
-# Build rule for target.
-lib-test-util: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib-test-util
-.PHONY : lib-test-util
-
-# fast build rule for target.
-lib-test-util/fast:
-	$(MAKE) $(MAKESILENT) -f tests\testutil\CMakeFiles\lib-test-util.dir\build.make tests/testutil/CMakeFiles/lib-test-util.dir/build
-.PHONY : lib-test-util/fast
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -273,12 +237,9 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... test
 	@echo ... SpaMtrix
-	@echo ... cpp-test
 	@echo ... fmt
 	@echo ... lib-qlc3d
-	@echo ... lib-test-util
 	@echo ... matrix_basics
 	@echo ... qlc3d
 .PHONY : help

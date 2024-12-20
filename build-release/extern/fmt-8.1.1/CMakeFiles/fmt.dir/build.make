@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d
+CMAKE_SOURCE_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release
+CMAKE_BINARY_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release"
 
 # Include any dependencies generated for this target.
 include extern/fmt-8.1.1/CMakeFiles/fmt.dir/depend.make
@@ -73,33 +73,33 @@ extern/fmt-8.1.1/CMakeFiles/fmt.dir/codegen:
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/flags.make
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/includes_CXX.rsp
-extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/extern/fmt-8.1.1/src/format.cc
+extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/extern/fmt-8.1.1/src/format.cc
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj -MF CMakeFiles\fmt.dir\src\format.cc.obj.d -o CMakeFiles\fmt.dir\src\format.cc.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\format.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj -MF CMakeFiles\fmt.dir\src\format.cc.obj.d -o CMakeFiles\fmt.dir\src\format.cc.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\format.cc"
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fmt.dir/src/format.cc.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\format.cc > CMakeFiles\fmt.dir\src\format.cc.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\format.cc" > CMakeFiles\fmt.dir\src\format.cc.i
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fmt.dir/src/format.cc.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\format.cc -o CMakeFiles\fmt.dir\src\format.cc.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\format.cc" -o CMakeFiles\fmt.dir\src\format.cc.s
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/flags.make
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/includes_CXX.rsp
-extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/extern/fmt-8.1.1/src/os.cc
+extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/extern/fmt-8.1.1/src/os.cc
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj: extern/fmt-8.1.1/CMakeFiles/fmt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj -MF CMakeFiles\fmt.dir\src\os.cc.obj.d -o CMakeFiles\fmt.dir\src\os.cc.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\os.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj -MF CMakeFiles\fmt.dir\src\os.cc.obj.d -o CMakeFiles\fmt.dir\src\os.cc.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\os.cc"
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fmt.dir/src/os.cc.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\os.cc > CMakeFiles\fmt.dir\src\os.cc.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\os.cc" > CMakeFiles\fmt.dir\src\os.cc.i
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fmt.dir/src/os.cc.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1\src\os.cc -o CMakeFiles\fmt.dir\src\os.cc.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1\src\os.cc" -o CMakeFiles\fmt.dir\src\os.cc.s
 
 # Object files for target fmt
 fmt_OBJECTS = \
@@ -113,19 +113,19 @@ extern/fmt-8.1.1/libfmt.a: extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/format.cc.obj
 extern/fmt-8.1.1/libfmt.a: extern/fmt-8.1.1/CMakeFiles/fmt.dir/src/os.cc.obj
 extern/fmt-8.1.1/libfmt.a: extern/fmt-8.1.1/CMakeFiles/fmt.dir/build.make
 extern/fmt-8.1.1/libfmt.a: extern/fmt-8.1.1/CMakeFiles/fmt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfmt.a"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && $(CMAKE_COMMAND) -P CMakeFiles\fmt.dir\cmake_clean_target.cmake
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\fmt.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfmt.a"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && $(CMAKE_COMMAND) -P CMakeFiles\fmt.dir\cmake_clean_target.cmake
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\fmt.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/build: extern/fmt-8.1.1/libfmt.a
 .PHONY : extern/fmt-8.1.1/CMakeFiles/fmt.dir/build
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/clean:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 && $(CMAKE_COMMAND) -P CMakeFiles\fmt.dir\cmake_clean.cmake
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\extern\FMT-81~1.1 && $(CMAKE_COMMAND) -P CMakeFiles\fmt.dir\cmake_clean.cmake
 .PHONY : extern/fmt-8.1.1/CMakeFiles/fmt.dir/clean
 
 extern/fmt-8.1.1/CMakeFiles/fmt.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Public\Public_desktop\qlc3d_new\qlc3d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\extern\fmt-8.1.1 C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1 C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\fmt-8.1.1\CMakeFiles\fmt.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\extern\fmt-8.1.1" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\extern\fmt-8.1.1" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\extern\fmt-8.1.1\CMakeFiles\fmt.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : extern/fmt-8.1.1/CMakeFiles/fmt.dir/depend
 

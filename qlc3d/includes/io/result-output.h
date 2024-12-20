@@ -129,4 +129,15 @@ public:
   ~VtkUnstructuredAsciiGridFormatWriter() override = default;
 };
 
+class RegularNemaktisDirectorFormatWriter : public ResultFormatWriter
+{
+public:
+  explicit RegularNemaktisDirectorFormatWriter(const std::filesystem::path &outputDir) : ResultFormatWriter(outputDir) {};
+  [[nodiscard]] bool isDirectorRequired() const override { return true; };
+  [[nodiscard]] bool isRegularGridRequired() const override { return true; };
+  [[nodiscard]] const std::string formatName() const override { return "RegularNemaktisDirector"; };
+  void writeResult(const Geometry &geom, const SimulationState &simulationState) override;
+  ~RegularNemaktisDirectorFormatWriter() override = default;
+};
+
 #endif // PROJECT_QLC3D_RESULT_OUTPUT_H

@@ -114,7 +114,6 @@ void readDouble(Reader &reader, const std::string &key, std::function<void(doubl
       }
       double result = te_eval(expr);
       te_free(expr);
-      std::cout << "Parsed expression: " << strValue << " = " << result << std::endl;
       consumer(result);
     }
     catch (const std::exception &e)

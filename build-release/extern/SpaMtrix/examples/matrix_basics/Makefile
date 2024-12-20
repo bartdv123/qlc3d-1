@@ -56,23 +56,13 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d
+CMAKE_SOURCE_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release
+CMAKE_BINARY_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release"
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	"C:\Program Files\CMake\bin\ctest.exe" --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -141,14 +131,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\extern\SpaMtrix\examples\matrix_basics\\CMakeFiles\progress.marks
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles 0
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\extern\SpaMtrix\examples\matrix_basics\\CMakeFiles\progress.marks"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/clean
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/clean
 .PHONY : clean
 
 # The main clean target
@@ -157,22 +147,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/preinstall
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/preinstall
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/rule:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/rule
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/rule
 .PHONY : extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/rule
 
 # Convenience name for target.
@@ -181,7 +171,7 @@ matrix_basics: extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.d
 
 # fast build rule for target.
 matrix_basics/fast:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/build
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/build
 .PHONY : matrix_basics/fast
 
 matrix_basics.obj: matrix_basics.cpp.obj
@@ -189,7 +179,7 @@ matrix_basics.obj: matrix_basics.cpp.obj
 
 # target to build an object file
 matrix_basics.cpp.obj:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.obj
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.obj
 .PHONY : matrix_basics.cpp.obj
 
 matrix_basics.i: matrix_basics.cpp.i
@@ -197,7 +187,7 @@ matrix_basics.i: matrix_basics.cpp.i
 
 # target to preprocess a source file
 matrix_basics.cpp.i:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.i
 .PHONY : matrix_basics.cpp.i
 
 matrix_basics.s: matrix_basics.cpp.s
@@ -205,7 +195,7 @@ matrix_basics.s: matrix_basics.cpp.s
 
 # target to generate assembly for a file
 matrix_basics.cpp.s:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(MAKE) $(MAKESILENT) -f extern\SpaMtrix\examples\matrix_basics\CMakeFiles\matrix_basics.dir\build.make extern/SpaMtrix/examples/matrix_basics/CMakeFiles/matrix_basics.dir/matrix_basics.cpp.s
 .PHONY : matrix_basics.cpp.s
 
 # Help Target
@@ -220,7 +210,6 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... test
 	@echo ... matrix_basics
 	@echo ... matrix_basics.obj
 	@echo ... matrix_basics.i
@@ -236,6 +225,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

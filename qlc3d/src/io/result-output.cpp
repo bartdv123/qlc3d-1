@@ -51,6 +51,11 @@ ResultOutput::ResultOutput(const std::set<Simu::SaveFormats> &saveFormats,
     {
       outputFormatWriters_.push_back(std::shared_ptr<ResultFormatWriter>(new VtkUnstructuredAsciiGridFormatWriter(outputDir)));
     }
+    else if (s == Simu::SaveFormats::RegularNemaktisDirector)
+    {
+      outputFormatWriters_.push_back(std::shared_ptr<ResultFormatWriter>(new RegularNemaktisDirectorFormatWriter(outputDir)));
+    }
+  
     else
     {
       RUNTIME_ERROR("Unknown save format: " + std::to_string(s));
@@ -210,3 +215,18 @@ void VtkUnstructuredAsciiGridFormatWriter::writeResult(const Geometry &geom, con
       geom.getCoordinates(), geom.getnpLC(), geom.getTetrahedra(), *potential, *qTensor, *tiltE, *twistE, *bendE, *elasticE, *thermoE, *electricE, *totalE, filePath.string());
 }
 //</editor-fold>
+
+void RegularNemaktisDirectorFormatWriter::writeResult(const Geometry &geom, const SimulationState &simulationState)
+{
+  if (simulationState.state() == RunningState::COMPLETED) {
+  fs::path filePath = outputDirectory / ("interpolated_director_nemaktis" + iterationAsString(simulationState) + ".m");
+
+  RegularGrid *rGrid = geom.getRegularGrid();
+  if (rGrid == nullptr)
+  {
+    RUNTIME_ERROR("RegularNemaktisDirector writer requires regular grid");
+  }
+  rGrid->writeNemaktisDirector(filePath.c_str(), // WRITE REGULAR GRID RESULT FILE
+                         *directors);
+                         }
+}

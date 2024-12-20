@@ -30,8 +30,10 @@ void handleElectrodeSwitching(Event *currentEvent,
   // IF SWITCHING INSTANCE IS A FLAG FOR UNIFORM ELECTRIC FIELD, CAN EXIT
   if (si->electrodeNumber == SwitchingInstance::UNIFORM_E_FIELD)
   {
+    Log::info("Switching to uniform electric field");
     return;
   }
+
 
   // SET POTENTIAL BOUNDARY CONDITIONS FOR ALL ELECTRODES
   auto potentialsByElectrode = electr.getCurrentPotentials(simulationState.currentTime().getTime());
@@ -105,6 +107,7 @@ void handleInitialEvents(SimulationState &simulationState, // non-const since dt
                         Kq); // defined in refinementhandler.cpp
   }
 
+  Log::info("Starting initial potential calculation");
   // ALWAYS CALCULATE INITIAL POTENTIAL
   potentialSolver.solvePotential(*solutionvectors.v, *solutionvectors.q, *geometries.geom);
 

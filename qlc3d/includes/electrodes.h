@@ -53,11 +53,16 @@ private:
   std::unordered_map<unsigned int, std::shared_ptr<Electrode>> electrodeMap;
   std::shared_ptr<Vec3> electricField; // optional uniform electric field
   std::vector<double> eps_dielectric; // relative dielectric permittivity of dielectric regions
+  bool uniformElectricField_ = false; // Flag for uniform electric field
+
 public:
 
     Electrodes();
     Electrodes(std::vector<std::shared_ptr<Electrode>> electrodes, std::shared_ptr<Vec3> electricField = nullptr) {
       this->electricField = electricField;
+      if (electricField) {
+          uniformElectricField_ = true;
+      }
       for (auto e : electrodes) {
         electrodeMap[e->getElectrodeNumber()] = e;
       }

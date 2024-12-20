@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d
+CMAKE_SOURCE_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release
+CMAKE_BINARY_DIR = "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release"
 
 # Include any dependencies generated for this target.
 include qlc3d/CMakeFiles/qlc3d.dir/depend.make
@@ -73,18 +73,18 @@ qlc3d/CMakeFiles/qlc3d.dir/codegen:
 
 qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj: qlc3d/CMakeFiles/qlc3d.dir/flags.make
 qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj: qlc3d/CMakeFiles/qlc3d.dir/includes_CXX.rsp
-qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/qlc3d/src/main-app-qlc3d.cpp
+qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj: C:/Users/badvries/OneDrive\ -\ UGent/Documents/QLC3Dsourcecode/qlc3d/src/main-app-qlc3d.cpp
 qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj: qlc3d/CMakeFiles/qlc3d.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj -MF CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.obj.d -o CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.obj -c C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\qlc3d\src\main-app-qlc3d.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.obj -MF CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.obj.d -o CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.obj -c "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\qlc3d\src\main-app-qlc3d.cpp"
 
 qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.i"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\qlc3d\src\main-app-qlc3d.cpp > CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.i
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\qlc3d\src\main-app-qlc3d.cpp" > CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.i
 
 qlc3d/CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/qlc3d.dir/src/main-app-qlc3d.cpp.s"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\qlc3d\src\main-app-qlc3d.cpp -o CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.s
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\qlc3d && C:\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\qlc3d\src\main-app-qlc3d.cpp" -o CMakeFiles\qlc3d.dir\src\main-app-qlc3d.cpp.s
 
 # Object files for target qlc3d
 qlc3d_OBJECTS = \
@@ -101,18 +101,18 @@ qlc3d/qlc3d.exe: extern/fmt-8.1.1/libfmt.a
 qlc3d/qlc3d.exe: qlc3d/CMakeFiles/qlc3d.dir/linkLibs.rsp
 qlc3d/qlc3d.exe: qlc3d/CMakeFiles/qlc3d.dir/objects1.rsp
 qlc3d/qlc3d.exe: qlc3d/CMakeFiles/qlc3d.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable qlc3d.exe"
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\qlc3d.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable qlc3d.exe"
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\qlc3d && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\qlc3d.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 qlc3d/CMakeFiles/qlc3d.dir/build: qlc3d/qlc3d.exe
 .PHONY : qlc3d/CMakeFiles/qlc3d.dir/build
 
 qlc3d/CMakeFiles/qlc3d.dir/clean:
-	cd /d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d && $(CMAKE_COMMAND) -P CMakeFiles\qlc3d.dir\cmake_clean.cmake
+	cd /d C:\Users\badvries\ONEDRI~1\DOCUME~1\QLC3DS~1\BUILD-~1\qlc3d && $(CMAKE_COMMAND) -P CMakeFiles\qlc3d.dir\cmake_clean.cmake
 .PHONY : qlc3d/CMakeFiles/qlc3d.dir/clean
 
 qlc3d/CMakeFiles/qlc3d.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Public\Public_desktop\qlc3d_new\qlc3d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\qlc3d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d C:\Users\Public\Public_desktop\qlc3d_new\qlc3d\build-release\qlc3d\CMakeFiles\qlc3d.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\qlc3d" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\qlc3d" "C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\qlc3d\CMakeFiles\qlc3d.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : qlc3d/CMakeFiles/qlc3d.dir/depend
 

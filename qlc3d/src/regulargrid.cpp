@@ -543,6 +543,8 @@ bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
   return true;
 }
 
+
+
 bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
                                  const std::vector<qlc3d::Director> &dir,
                                  double time)
@@ -584,5 +586,60 @@ bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
     }
   }
   fid.close();
+  return true;
+}
+
+bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
+                                        const std::vector<qlc3d::Director> &dir)
+{
+  std::ofstream fid(fileName);
+  if (!fid.good())
+  {
+    return false;
+  }
+
+  fid << "grid_size = [" << nx_ << "," << ny_ << "," << nz_ << "];" << std::endl;
+
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+
+  std::vector<double> nx, ny, nz, x, y, z;
+  nx.resize(regN.size(), 0);
+  ny.resize(regN.size(), 0);
+  nz.resize(regN.size(), 0);
+  x.resize(nx_ * ny_ * nz_, 0);
+  y.resize(nx_ * ny_ * nz_, 0);
+  z.resize(nx_ * ny_ * nz_, 0);
+
+  for (idx i = 0; i < regN.size(); ++i)
+  {
+    nx[i] = regN[i].nx();
+    ny[i] = regN[i].ny();
+    nz[i] = regN[i].nz();
+  }
+
+  for (idx zi = 0; zi < nz_; ++zi)
+  {
+    for (idx yi = 0; yi < ny_; ++yi)
+    {
+      for (idx xi = 0; xi < nx_; ++xi)
+      {
+        idx i = gridToLinearIndex(xi, yi, zi);
+        x[i] = getGridX(xi);
+        y[i] = getGridY(yi);
+        z[i] = getGridZ(zi);
+      }
+    }
+  }
+
+
+  MatlabIOFun::writeNumberColumns(fid, "nx", nx, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "ny", ny, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "nz", nz, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "x", x, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "y", y, nx_, ny_, nz_);
+  MatlabIOFun::writeNumberColumns(fid, "z", z, nx_, ny_, nz_);
+
+  fid.close();
+
   return true;
 }

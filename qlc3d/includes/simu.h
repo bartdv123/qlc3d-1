@@ -32,7 +32,8 @@ public:
                       DirStackZ,        // REGULAR GRID, CSV-FILE WHERE EA
                       LCviewTXT,        // LCview ASCII text file
                       CsvUnstructured,   // Unstructured csv file, compatible with paraview
-                      VTKUnstructuredAsciiGrid
+                      VTKUnstructuredAsciiGrid, // VTK unstructured grid compatible with paraview
+                      RegularNemaktisDirector // Regular grid, director components compatible with Nemaktis
                      };
     // RegularDirStackZ is written in a CommaSeparatedValue (CSV) text file where each
     // Row is a stack of directors along the z-axis.

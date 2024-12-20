@@ -176,6 +176,9 @@ public:
       array[indDof] = getValue(i);
     }
   }
+
+  
+
 };
 
 #endif

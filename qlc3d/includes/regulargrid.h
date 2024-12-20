@@ -138,6 +138,14 @@ public:
     bool writeDirStackZ(const std::filesystem::path &filename,
                         const std::vector<qlc3d::Director> &dir,
                         double time = 0);
+
+    // WRITE MATLAB FILES COMPATIBLE WITH NEMAKTIS 
+
+    bool writeNemaktisDirector(const std::filesystem::path &filename,
+                               const std::vector<qlc3d::Director> &dir);
+
+    bool writeNemaktisQtensor(const std::filesystem::path &filename,
+                             const SolutionVector &q);
 };
 
 #endif // REGULARGRID_H

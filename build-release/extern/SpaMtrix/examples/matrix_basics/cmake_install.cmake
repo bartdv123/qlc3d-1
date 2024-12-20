@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/extern/SpaMtrix/examples/matrix_basics
+# Install script for directory: C:/Users/badvries/OneDrive - UGent/Documents/QLC3Dsourcecode/extern/SpaMtrix/examples/matrix_basics
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,6 +40,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Public/Public_desktop/qlc3d_new/qlc3d/build-release/extern/SpaMtrix/examples/matrix_basics/install_local_manifest.txt"
+  file(WRITE "C:/Users/badvries/OneDrive - UGent/Documents/QLC3Dsourcecode/build-release/extern/SpaMtrix/examples/matrix_basics/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

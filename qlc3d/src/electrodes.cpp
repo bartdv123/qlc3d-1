@@ -100,6 +100,7 @@ bool Electrodes::isPotentialCalculationRequired() const {
         return false;
     }
     if (0 == getnElectrodes()) { // if have no electrodes
+        Log::info("No electrodes defined. Potential calculation is not required.");
         return false;
     }
     // Otherwise

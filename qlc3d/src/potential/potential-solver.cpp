@@ -69,8 +69,8 @@ void setupSingleBlock(const Geometry &geom,
 }
 
 bool PotentialSolver::isPotentialSolutionRequired(const SolutionVector &v) const {
-  return v.getnFixed() > 0 || electrodes->isPotentialCalculationRequired();
-  // todo: possibly also required if flexoelectric effect is present
+    bool result = v.getnFixed() > 0 && electrodes->isPotentialCalculationRequired();
+    return result;
 }
 
 void PotentialSolver::setUniformEField(SolutionVector &vOut, const Coordinates &coordinates) const {
@@ -97,7 +97,7 @@ void PotentialSolver::setUniformEField(SolutionVector &vOut, const Coordinates &
 
 void PotentialSolver::createPotentialMatrix(const Geometry &geom, const SolutionVector &sol) {
   if (!electrodes->isPotentialCalculationRequired()) {
-    Log::info("Potential calculation not required. Creating empty matrix for Potential solver.");
+        Log::info("Potential calculation not required. Creating empty matrix for Potential solver.");
     K = std::make_unique<SpaMtrix::IRCMatrix>();
   }
 
@@ -461,11 +461,13 @@ double calculateConditionNumber(const SpaMtrix::IRCMatrix &m) {
 void PotentialSolver::solvePotential(SolutionVector &vOut,
                                      const SolutionVector &q,
                                      const Geometry &geom) {
-
+                                    
   if (!isPotentialSolutionRequired(vOut)) {
+    // If no potential calculation is required, set all values to 0 or the uniform electric field if present
     vOut.setValuesTo(0);
     if (electrodes->hasElectricField()) {
-      setUniformEField(vOut, geom.getCoordinates());
+          Log::info("Setting potential values to ensure uniform electric field.");
+          setUniformEField(vOut, geom.getCoordinates());
     }
     return;
   }

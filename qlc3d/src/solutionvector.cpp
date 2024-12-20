@@ -532,3 +532,7 @@ int64_t SolutionVector::hashCode()
 {
     return hashCode64(&values[0], &values[values.size()]);
 }
+
+
+
+

@@ -781,7 +781,7 @@ void Geometry::makeRegularGrid(const size_t &nx,
   {
     return;
   }
-  Log::info("Generating regular grid lookup with grid size nx={}, ny={}, nz={}", nx, ny, nz);
+  Log::info(" regular grid lookup with grid size nx={}, ny={}, nz={}", nx, ny, nz);
 
   if (regularGrid)
   {
@@ -908,7 +908,8 @@ size_t Geometry::recursive_neighbour_search(
 void Geometry::genIndToTetsByCoords(vector<unsigned int> &returnIndex,    // return index
                                     const Coordinates &targetCoordinates, // coordinates, but not necessarily from this same geometry
                                     const bool &terminateOnError,         // whther to terminate app. if coordinate not found. default = true;
-                                    const bool &requireLCElement)
+                                    const bool &requireLCElement
+                                    )          // Add the p_to_elem mapping -> Don't generate it everytime...
 { // only LC element can be re returned
   /*!
   Generates index to tetrahedron that contain coordinate coord.
@@ -926,13 +927,13 @@ void Geometry::genIndToTetsByCoords(vector<unsigned int> &returnIndex,    // ret
   {
     RUNTIME_ERROR("No tetrahedra elements defined");
   }
-
+  Log::info("Generating mapping");
   returnIndex.clear();
   unsigned int nt = (unsigned int)this->t->getnElements();
   returnIndex.assign(targetCoordinates.size(), nt); // assing with a value that is one too much initially
   vector<set<unsigned int>> p_to_t;
   t->gen_p_to_elem(p_to_t);
-
+  Log::info("Mapping generated");
   // find most central tet, this is used as starting tet in other searches
   Vec3 structureCentroid = boundingBox.centre();
 
@@ -943,12 +944,16 @@ void Geometry::genIndToTetsByCoords(vector<unsigned int> &returnIndex,    // ret
     midTet = 0;
   }
 
+  Log::info("Starting neighbour search for all target coordinates");
   // for each target coordinate, find which tet contains it, starting each search from midTet
   for (unsigned int n = 0; n < targetCoordinates.size(); n++)
   {                                 // for each coord
+    if (n % 10000 == 0)
+    {
+      Log::info("Searching for target coordinate {} of {})", n, targetCoordinates.size());
+    }
     std::set<size_t> searchHistory; // keeps track of tested tets to avoid repeating work
     Vec3 targetPoint = targetCoordinates.getPoint(n);
-
     // nearest neighbour search
     size_t t0 = recursive_neighbour_search(targetPoint, p_to_t, midTet, searchHistory, requireLCElement);
     if (t0 != NOT_AN_INDEX)

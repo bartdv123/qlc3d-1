@@ -14,7 +14,7 @@ const vector<string> Simu::VALID_END_CRITERIA = {"iterations", "time", "change"}
 
 // NOTE: the order of these should match the order of the corresponding enum values
 const vector<string> Simu::VALID_SAVE_FORMATS = {
-        "lcview", "regularvtk", "regularvecmat", "dirstackz", "lcviewtxt", "csvunstructured", "vtkunstructuredasciigrid", "regularnemaktisdirector"};
+        "lcview", "regularvtk", "regularvecmat", "dirstackz", "lcviewtxt", "csvunstructured", "vtkunstructuredasciigrid", "regularnemaktisdirector", "regularnemaktisqtensor"};
 const vector<string> Simu::VALID_Q_MATRIX_SOLVERS = {"Auto", "PCG", "GMRES"};
 // Define values of default Simu parameters
 const string Simu::DEFAULT_LOAD_Q = "";

@@ -142,6 +142,8 @@ bool RegularGrid::generateLookupList(Geometry *geom)
 {
   size_t cc = 0; // coordinate counter
   std::vector<Vec3> gridPoints;
+
+  Log::info("Starting grid creation loop");
   for (unsigned int k = 0; k < nz_; k++)
   { // loop over z
     double z = getGridZ(k);
@@ -156,12 +158,14 @@ bool RegularGrid::generateLookupList(Geometry *geom)
       }
     } // end loop over y
   } // end loop over z
+  Log::info("Grid creation loop finished");
   Coordinates gridCoordinates(std::move(gridPoints));
 
   // GENERATE INDEX TO TETS THAT CONTAIN EARCH REGULAR GRID POINT
   // INDEX WILL HAVE SPECIAL VALUE Geom::NOT_AN_INDEX, IF POITN WAS NOT FOUND
   // THIS MAY HAPPEN WHEN THE UNDERLYING TET MESH IS NOT A CUBE
   std::vector<unsigned int> indT; // index to tet containing a regular coordinate
+
   geom->genIndToTetsByCoords(indT,
                              gridCoordinates,
                              false,  // do NOT terminate app if a coord is not found
@@ -355,6 +359,28 @@ std::vector<double> RegularGrid::interpolateToRegularS(const std::vector<qlc3d::
     }
   }
   return regS;
+}
+
+std::vector<std::vector<double>> RegularGrid::interpolateToRegularQ(const SolutionVector &q) const 
+{
+    // Create vector of 5 components for Q tensor
+    std::vector<std::vector<double>> regQ(5, std::vector<double>());
+    
+    // For each component
+    for (int comp = 0; comp < 5; comp++) {
+        for (auto &l : lookupList) {
+            if (l.type == RegularGrid::OK) {
+                regQ[comp].push_back(
+                    q.getValue(l.ind[0], comp) * l.weight[0] + 
+                    q.getValue(l.ind[1], comp) * l.weight[1] + 
+                    q.getValue(l.ind[2], comp) * l.weight[2] + 
+                    q.getValue(l.ind[3], comp) * l.weight[3]);
+            } else {
+                regQ[comp].push_back(std::numeric_limits<double>::quiet_NaN());
+            }
+        }
+    }
+    return regQ;
 }
 
 std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const
@@ -591,6 +617,7 @@ bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
 
 bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
                                         const std::vector<qlc3d::Director> &dir)
+
 {
   std::ofstream fid(fileName);
   if (!fid.good())
@@ -598,48 +625,92 @@ bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
     return false;
   }
 
-  fid << "grid_size = [" << nx_ << "," << ny_ << "," << nz_ << "];" << std::endl;
+  // First line is grid sizes (how many points in x, y, z)
+  fid << nx_ << ',' << ny_ << ',' << nz_ << std::endl;
 
+  // Second line is dimensions of the grid (Lx, Ly, Lz)
+  double Lx = getGridX(nx_ - 1) - getGridX(0);
+  double Ly = getGridY(ny_ - 1) - getGridY(0);
+  double Lz = getGridZ(nz_ - 1) - getGridZ(0);
+  fid << Lx << ',' << Ly << ',' << Lz << std::endl;
+
+  // Grab the regular grid director values
   std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
 
-  std::vector<double> nx, ny, nz, x, y, z;
-  nx.resize(regN.size(), 0);
-  ny.resize(regN.size(), 0);
-  nz.resize(regN.size(), 0);
-  x.resize(nx_ * ny_ * nz_, 0);
-  y.resize(nx_ * ny_ * nz_, 0);
-  z.resize(nx_ * ny_ * nz_, 0);
-
-  for (idx i = 0; i < regN.size(); ++i)
+  // Write the director values
+  for (idx z = 0; z < nz_; z++)
   {
-    nx[i] = regN[i].nx();
-    ny[i] = regN[i].ny();
-    nz[i] = regN[i].nz();
-  }
-
-  for (idx zi = 0; zi < nz_; ++zi)
-  {
-    for (idx yi = 0; yi < ny_; ++yi)
+  for (idx y = 0; y < ny_; y++)
     {
-      for (idx xi = 0; xi < nx_; ++xi)
+    for (idx x = 0; x < nx_; x++)
       {
-        idx i = gridToLinearIndex(xi, yi, zi);
-        x[i] = getGridX(xi);
-        y[i] = getGridY(yi);
-        z[i] = getGridZ(zi);
+        idx i = gridToLinearIndex(x, y, z);
+
+        if (std::isnan(regN[i].S()))
+        {
+          fid << "NaN,NaN,NaN,NaN,NaN,NaN";
+        }
+        else
+        {
+          double coordX = getGridX(x);
+          double coordY = getGridY(y);
+          double coordZ = getGridZ(z);
+          fid << coordX << "," << coordY << "," << coordZ << ","
+              << regN[i].nx() << "," << regN[i].ny() << "," << regN[i].nz();
+        }
+        fid << std::endl;
       }
+      
     }
   }
 
-
-  MatlabIOFun::writeNumberColumns(fid, "nx", nx, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "ny", ny, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "nz", nz, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "x", x, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "y", y, nx_, ny_, nz_);
-  MatlabIOFun::writeNumberColumns(fid, "z", z, nx_, ny_, nz_);
-
   fid.close();
-
   return true;
+}
+
+
+bool RegularGrid::writeNemaktisQtensor(const std::filesystem::path& fileName, const SolutionVector& q, double S0) 
+{
+    std::ofstream fid(fileName);
+    if (!fid.good()) {
+        return false;
+    }
+    // First line: grid sizes
+    fid << nx_ << ',' << ny_ << ',' << nz_ << std::endl;
+
+    // Second line: grid dimensions
+    double Lx = getGridX(nx_ - 1) - getGridX(0);
+    double Ly = getGridY(ny_ - 1) - getGridY(0);
+    double Lz = getGridZ(nz_ - 1) - getGridZ(0);
+    fid << Lx << ',' << Ly << ',' << Lz << std::endl;
+
+    // Third line
+    fid << S0 << std::endl;
+
+    // Get interpolated Q tensor values
+    std::vector<std::vector<double>> regQ = interpolateToRegularQ(q);
+
+    // Write Q tensor values
+    for (idx z = 0; z < nz_; z++) {
+        for (idx y = 0; y < ny_; y++) {
+            for (idx x = 0; x < nx_; x++) {
+                idx i = gridToLinearIndex(x, y, z);
+
+                if (std::isnan(regQ[0][i])) {
+                    fid << "NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN";
+                } else {
+                    double coordX = getGridX(x);
+                    double coordY = getGridY(y);
+                    double coordZ = getGridZ(z);
+                    fid << coordX << "," << coordY << "," << coordZ << ","
+                        << regQ[0][i] << "," << regQ[1][i] << "," << regQ[2][i] << ","
+                        << regQ[3][i] << "," << regQ[4][i];
+                }
+                fid << std::endl;
+            }
+        }
+    }
+
+    fid.close();
+    return true;
 }

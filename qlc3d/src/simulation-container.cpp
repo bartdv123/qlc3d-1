@@ -344,7 +344,7 @@ void SimulationContainer::runIteration()
 void SimulationContainer::postSimulationTasks()
 {
     simulationState.state(RunningState::COMPLETED);
-    resultOutput.writeResults(*geometries.geom, v, q, tiltE, twistE, bendE, elasticE, thermoE, electricE, totalE, simulationState);
+    resultOutput.writeResults(*geometries.geom, v, q, tiltE, twistE, bendE, elasticE, thermoE, electricE, totalE, simulationState, lc->S0());
     
     }
 

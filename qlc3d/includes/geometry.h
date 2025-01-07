@@ -82,8 +82,7 @@ public:
     void genIndToTetsByCoords(vector<unsigned int> &returnIndex,     // Return index
                               const Coordinates &targetCoordinates,  // coordinates to search
                               const bool &terminateOnError = true,   // terminate app. if coord not found
-                              const bool &requireLCElement = false); // only LC elements are considered
-
+                              const bool &requireLCElement = false);          // Add the p_to_elem mapping -> Don't generate it everytime...
     bool brute_force_search(unsigned int &ind,                   // found index, return value
                             const Vec3 &crd,                     // target coordinate to find
                             const bool &terminateOnError = true, // whether application terminates if coord is not found

@@ -112,7 +112,7 @@ void handleInitialEvents(SimulationState &simulationState, // non-const since dt
   potentialSolver.solvePotential(*solutionvectors.v, *solutionvectors.q, *geometries.geom);
 
   Log::info("Writing initial results");
-  resultOutput.writeResults(*geometries.geom, *solutionvectors.v, *solutionvectors.q, *solutionvectors.tiltE, *solutionvectors.twistE, *solutionvectors.bendE, *solutionvectors.elasticE, *solutionvectors.thermoE, *solutionvectors.electricE, *solutionvectors.totalE, simulationState);
+  resultOutput.writeResults(*geometries.geom, *solutionvectors.v, *solutionvectors.q, *solutionvectors.tiltE, *solutionvectors.twistE, *solutionvectors.bendE, *solutionvectors.elasticE, *solutionvectors.thermoE, *solutionvectors.electricE, *solutionvectors.totalE, simulationState, lc.S0());
 
   // ADD REOCCURRING EVENTS
   evel.manageReoccurringEvents(currentIteration, simulationState.currentTime(), timeStep);
@@ -218,7 +218,7 @@ void handleEvents(EventList &evel,
 
   if (saveResult)
   {
-    resultOutput.writeResults(*geometries.geom, *solutionvectors.v, *solutionvectors.q, *solutionvectors.tiltE, *solutionvectors.twistE, *solutionvectors.bendE, *solutionvectors.elasticE, *solutionvectors.thermoE, *solutionvectors.electricE, *solutionvectors.totalE, simulationState);
+    resultOutput.writeResults(*geometries.geom, *solutionvectors.v, *solutionvectors.q, *solutionvectors.tiltE, *solutionvectors.twistE, *solutionvectors.bendE, *solutionvectors.elasticE, *solutionvectors.thermoE, *solutionvectors.electricE, *solutionvectors.totalE, simulationState, lc.S0());
   }
 
   adaptiveTimeStep.setNextEventTime(evel.nextEventTime());

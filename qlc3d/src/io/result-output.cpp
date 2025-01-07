@@ -55,6 +55,10 @@ ResultOutput::ResultOutput(const std::set<Simu::SaveFormats> &saveFormats,
     {
       outputFormatWriters_.push_back(std::shared_ptr<ResultFormatWriter>(new RegularNemaktisDirectorFormatWriter(outputDir)));
     }
+    else if (s == Simu::SaveFormats::RegularNemaktisQTensor)
+    {
+      outputFormatWriters_.push_back(std::shared_ptr<ResultFormatWriter>(new RegularNemaktisQTensorFormatWriter(outputDir, S0)));
+    }
   
     else
     {
@@ -73,7 +77,8 @@ void ResultOutput::writeResults(const Geometry &geom,
                                 const SolutionVector &thermoE,
                                 const SolutionVector &electricE,
                                 const SolutionVector &totalE,
-                                const SimulationState &simulationState)
+                                const SimulationState &simulationState,
+                                double S0)
 {
   // if any of current output format writers requires director, calculate director
   std::vector<qlc3d::Director> directors;
@@ -219,7 +224,7 @@ void VtkUnstructuredAsciiGridFormatWriter::writeResult(const Geometry &geom, con
 void RegularNemaktisDirectorFormatWriter::writeResult(const Geometry &geom, const SimulationState &simulationState)
 {
   if (simulationState.state() == RunningState::COMPLETED) {
-  fs::path filePath = outputDirectory / ("interpolated_director_nemaktis" + iterationAsString(simulationState) + ".m");
+  fs::path filePath = outputDirectory / ("interpolated_director_nemaktis" + iterationAsString(simulationState) + ".txt");
 
   RegularGrid *rGrid = geom.getRegularGrid();
   if (rGrid == nullptr)
@@ -229,4 +234,21 @@ void RegularNemaktisDirectorFormatWriter::writeResult(const Geometry &geom, cons
   rGrid->writeNemaktisDirector(filePath.c_str(), // WRITE REGULAR GRID RESULT FILE
                          *directors);
                          }
+}
+
+void RegularNemaktisQTensorFormatWriter::writeResult(const Geometry &geom, const SimulationState &simulationState)
+{
+    if (simulationState.state() == RunningState::COMPLETED) {
+        fs::path filePath = outputDirectory / ("interpolated_qtensor_nemaktis" + iterationAsString(simulationState) + ".txt");
+
+        RegularGrid *rGrid = geom.getRegularGrid();
+        if (rGrid == nullptr)
+        {
+            RUNTIME_ERROR("RegularNemaktisQTensor writer requires regular grid");
+        }
+
+       
+        
+        rGrid->writeNemaktisQtensor(filePath, *qTensor, S0_);
+    }
 }

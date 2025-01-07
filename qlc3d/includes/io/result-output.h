@@ -6,6 +6,8 @@
 #include <set>
 #include <simu.h>
 #include <memory>
+#include <lc.h>
+
 #include <filesystem>
 
 // forward declarations
@@ -35,6 +37,7 @@ protected:
   const SolutionVector *electricE = nullptr;
   const SolutionVector *totalE = nullptr;
   const std::filesystem::path outputDirectory;
+  const LC *lc = nullptr;  // Add LC pointer
 
   std::string static iterationAsString(const SimulationState &simulationState);
 
@@ -53,6 +56,8 @@ public:
   void setThermoE(const SolutionVector &thermoE) { this->thermoE = &thermoE; };
   void setElectricE(const SolutionVector &electricE) { this->electricE = &electricE; };
   void setTotalE(const SolutionVector &totalE) { this->totalE = &totalE; };
+  void setLC(const LC &lc) { this->lc = &lc; }  // Add setter
+
 
   /**
    * write the result to the output format.
@@ -67,7 +72,7 @@ class ResultOutput
 {
 public:
   ResultOutput(const std::set<Simu::SaveFormats> &saveFormats, const std::string &meshName, double S0, const std::filesystem::path &outputDir);
-  void writeResults(const Geometry &geom, const SolutionVector &potential, const SolutionVector &qtensor, const SolutionVector &tiltE, const SolutionVector &twistE, const SolutionVector &bendE, const SolutionVector &elasticE, const SolutionVector &thermoE, const SolutionVector &electricE, const SolutionVector &totalE, const SimulationState &simulationState);
+  void writeResults(const Geometry &geom, const SolutionVector &potential, const SolutionVector &qtensor, const SolutionVector &tiltE, const SolutionVector &twistE, const SolutionVector &bendE, const SolutionVector &elasticE, const SolutionVector &thermoE, const SolutionVector &electricE, const SolutionVector &totalE, const SimulationState &simulationState, double S0);
   [[nodiscard]] bool isRegularGridRequired() const;
 
 private:
@@ -139,5 +144,20 @@ public:
   void writeResult(const Geometry &geom, const SimulationState &simulationState) override;
   ~RegularNemaktisDirectorFormatWriter() override = default;
 };
+
+class RegularNemaktisQTensorFormatWriter : public ResultFormatWriter 
+{
+public:
+    explicit RegularNemaktisQTensorFormatWriter(const std::filesystem::path& outputDir, double S0) 
+        : ResultFormatWriter(outputDir), S0_(S0) {};
+    [[nodiscard]] bool isDirectorRequired() const override { return false; };
+    [[nodiscard]] bool isRegularGridRequired() const override { return true; };
+    [[nodiscard]] const std::string formatName() const override { return "RegularNemaktisQTensor"; };
+    void writeResult(const Geometry &geom, const SimulationState &simulationState) override;
+    ~RegularNemaktisQTensorFormatWriter() override = default;
+
+private:
+    double S0_;
+};  
 
 #endif // PROJECT_QLC3D_RESULT_OUTPUT_H

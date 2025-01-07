@@ -98,14 +98,8 @@ public:
                                  const idx npLC);
 
     [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &pot) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &tiltE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &twistE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &bendE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &elasticE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &thermoE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &electricE) const;
-    // [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &totalE) const;
     [[nodiscard]] std::vector<double> interpolateToRegularS(const std::vector<qlc3d::Director> &dir) const;
+    [[nodiscard]] std::vector<vector<double>> interpolateToRegularQ(const SolutionVector &q) const;
     [[nodiscard]] std::vector<qlc3d::Director> interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const;
     // ==============================================
     //
@@ -145,7 +139,8 @@ public:
                                const std::vector<qlc3d::Director> &dir);
 
     bool writeNemaktisQtensor(const std::filesystem::path &filename,
-                             const SolutionVector &q);
+                             const SolutionVector &q,
+                             double S0);
 };
 
 #endif // REGULARGRID_H

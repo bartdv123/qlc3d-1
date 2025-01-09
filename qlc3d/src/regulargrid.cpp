@@ -386,44 +386,40 @@ std::vector<std::vector<double>> RegularGrid::interpolateToRegularQ(const Soluti
 std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const
 {
   std::vector<qlc3d::Director> regDir;
-  for (auto &l : lookupList)
-  {
-    if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND)
-    {
-      regDir.push_back(qlc3d::Director({1, 0, 0}, std::numeric_limits<double>::quiet_NaN())); // S = NaN in non-LC regions
+  const idx npLC = dir.size();
+    
+    // Create arrays for interpolateDirNode
+    double* vecin = new double[3 * npLC];
+    double dirout[3];
+
+    // Fill input array
+    for (idx i = 0; i < npLC; i++) {
+        vecin[i] = dir[i].nx();
+        vecin[i + npLC] = dir[i].ny();
+        vecin[i + 2*npLC] = dir[i].nz();
     }
-    else
-    {
 
-      double nx = dir[l.ind[0]].nx() * l.weight[0] +
-                  dir[l.ind[1]].nx() * l.weight[1] +
-                  dir[l.ind[2]].nx() * l.weight[2] +
-                  dir[l.ind[3]].nx() * l.weight[3];
+    // Process each lookup point
+    for (auto &l : lookupList) {
+        if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND) {
+            regDir.push_back(qlc3d::Director({1, 0, 0}, std::numeric_limits<double>::quiet_NaN()));
+        } else {
+            // Interpolate director
+            interpolateDirNode(vecin, dirout, l, npLC);
 
-      double ny = dir[l.ind[0]].ny() * l.weight[0] +
-                  dir[l.ind[1]].ny() * l.weight[1] +
-                  dir[l.ind[2]].ny() * l.weight[2] +
-                  dir[l.ind[3]].ny() * l.weight[3];
+            // Interpolate S parameter
+            double S = dir[l.ind[0]].S() * l.weight[0] +
+                      dir[l.ind[1]].S() * l.weight[1] +
+                      dir[l.ind[2]].S() * l.weight[2] +
+                      dir[l.ind[3]].S() * l.weight[3];
 
-      double nz = dir[l.ind[0]].nz() * l.weight[0] +
-                  dir[l.ind[1]].nz() * l.weight[1] +
-                  dir[l.ind[2]].nz() * l.weight[2] +
-                  dir[l.ind[3]].nz() * l.weight[3];
-
-      double S = dir[l.ind[0]].S() * l.weight[0] +
-                 dir[l.ind[1]].S() * l.weight[1] +
-                 dir[l.ind[2]].S() * l.weight[2] +
-                 dir[l.ind[3]].S() * l.weight[3];
-
-      Vec3 n = {nx, ny, nz};
-      n.normalize();
-      qlc3d::Director d(n, S);
-      regDir.push_back(d);
+            regDir.push_back(qlc3d::Director({dirout[0], dirout[1], dirout[2]}, S));
+        }
     }
-  }
-  return regDir;
+
+    delete[] vecin;
+    return regDir;
 }
-
 void RegularGrid::interpolateDirToRegular(const double *vecIn,
                                           double *&vecOut,
                                           const idx npLC)

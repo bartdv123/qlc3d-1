@@ -871,11 +871,13 @@ size_t Geometry::recursive_neighbour_search(
   auto itr = unique(neighs.begin(), neighs.end());
   neighs.erase(itr, neighs.end());
   // REMOVE REFERENCE TO SELF TOO....
-  vector<double> dists;
+  double scale = boundingBox.getMaxSize();
+
+  vector<double> dists; // Calculate the distances to each neighbour
   for (size_t i = 0; i < neighs.size(); i++)
   {
     Vec3 centroid = getTetrahedra().elementCentroid(neighs[i], getCoordinates());
-    dists.push_back(centroid.distanceSquared(targetPoint));
+    dists.push_back(centroid.distanceSquared(targetPoint)); 
   }
   // FIND INDEX TO NEIGHBOUR THAT IS NEAREST
   size_t indn = min_element(dists.begin(), dists.end()) - dists.begin();

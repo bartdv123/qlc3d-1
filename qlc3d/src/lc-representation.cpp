@@ -115,10 +115,15 @@ Director tensortovector(const QTensor &q) {
     if ((A[0] >= A[1]) && (A[0] >= A[2])) iMax = 0;
     if ((A[1] >= A[0]) && (A[1] >= A[2])) iMax = 1;
     if ((A[2] >= A[0]) && (A[2] >= A[1])) iMax = 2;
+
+    // Get director components
+    double nx = R[3 * iMax + 0];
+    double ny = R[3 * iMax + 1];
+    double nz = R[3 * iMax + 2];
+
+
     return Director{
-            R[3 * iMax + 0],
-            R[3 * iMax + 1],
-            R[3 * iMax + 2],
+            nx, ny, nz,
             2.0 / 3.0 * (A[iMax] - A[iMin])
     };
 }

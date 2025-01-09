@@ -65,6 +65,14 @@ public:
   [[nodiscard]] double getYMax() const { return y_max; }
   [[nodiscard]] double getZMin() const { return z_min; }
   [[nodiscard]] double getZMax() const { return z_max; }
+  
+    
+  [[nodiscard]] double getMaxSize() const {
+        double dx = getXMax() - getXMin();
+        double dy = getYMax() - getYMin();
+        double dz = getZMax() - getZMin();
+        return std::max(dx, std::max(dy, dz));
+    };
 };
 
 template <>

@@ -336,8 +336,8 @@ qlc3d/CMakeFiles/lib-qlc3d.dir/clean:
 
 # All Build rule for target.
 qlc3d/CMakeFiles/qlc3d.dir/all: extern/fmt-8.1.1/CMakeFiles/fmt.dir/all
-qlc3d/CMakeFiles/qlc3d.dir/all: qlc3d/CMakeFiles/lib-qlc3d.dir/all
 qlc3d/CMakeFiles/qlc3d.dir/all: extern/SpaMtrix/lib/CMakeFiles/SpaMtrix.dir/all
+qlc3d/CMakeFiles/qlc3d.dir/all: qlc3d/CMakeFiles/lib-qlc3d.dir/all
 	$(MAKE) $(MAKESILENT) -f qlc3d\CMakeFiles\qlc3d.dir\build.make qlc3d/CMakeFiles/qlc3d.dir/depend
 	$(MAKE) $(MAKESILENT) -f qlc3d\CMakeFiles\qlc3d.dir\build.make qlc3d/CMakeFiles/qlc3d.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\badvries\OneDrive - UGent\Documents\QLC3Dsourcecode\build-release\CMakeFiles" --progress-num=73,74 "Built target qlc3d"

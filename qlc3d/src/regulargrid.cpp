@@ -671,6 +671,11 @@ bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
 
 bool RegularGrid::writeNemaktisQtensor(const std::filesystem::path& fileName, const SolutionVector& q, double S0) 
 {
+    // T tensor conversion is needed ap
+    const double rt2 = std::sqrt(2.);
+    const double rt6 = std::sqrt(6.);
+  
+
     std::ofstream fid(fileName);
     if (!fid.good()) {
         return false;
@@ -688,9 +693,31 @@ bool RegularGrid::writeNemaktisQtensor(const std::filesystem::path& fileName, co
     fid << S0 << std::endl;
 
     // Get interpolated Q tensor values
-    std::vector<std::vector<double>> regQ = interpolateToRegularQ(q);
+    std::vector<std::vector<double>> regT = interpolateToRegularQ(q);
+    // Initialize regQ vector with 5 components, each sized for grid points
+  std::vector<std::vector<double>> regQ(5, std::vector<double>(nx_ * ny_ * nz_));
 
+  // Convert T components to Q components for each grid point
+  for (idx i = 0; i < nx_ * ny_ * nz_; i++) {
+      // T to Q conversion
+      regQ[0][i] = -regT[0][i]/rt6 + regT[1][i]/rt2;  // q1
+      regQ[1][i] = -regT[0][i]/rt6 - regT[1][i]/rt2;  // q2
+      regQ[2][i] = regT[2][i]/rt2;                     // q3
+      regQ[3][i] = regT[3][i]/rt2;                     // q4
+      regQ[4][i] = regT[4][i]/rt2;                     // q5
+  }
+
+// Continue with existing file writing code...
     // Write Q tensor values
+
+    // regQ = [
+    // [Qxx values for all grid points],
+    // [Qyy values for all grid points],
+    // [Qxy values for all grid points],
+    // [Qyz values for all grid points],
+    // [Qxz values for all grid points]
+    // ]
+
     for (idx z = 0; z < nz_; z++) {
         for (idx y = 0; y < ny_; y++) {
             for (idx x = 0; x < nx_; x++) {
@@ -703,8 +730,7 @@ bool RegularGrid::writeNemaktisQtensor(const std::filesystem::path& fileName, co
                     double coordY = getGridY(y);
                     double coordZ = getGridZ(z);
                     fid << coordX << "," << coordY << "," << coordZ << ","
-                        << regQ[0][i] << "," << regQ[1][i] << "," << regQ[2][i] << ","
-                        << regQ[3][i] << "," << regQ[4][i];
+                        << regQ[0][i] << "," << regQ[1][i] << "," << regQ[2][i] << "," << regQ[3][i] << "," << regQ[4][i];
                 }
                 fid << std::endl;
             }

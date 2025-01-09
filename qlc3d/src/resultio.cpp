@@ -25,7 +25,8 @@ void ResultIO::writeCsvUnstructured(const Coordinates &coordinates,
         throw std::runtime_error("could not open output file:" + fileName);
     }
 
-    fs << "x, y, z, v, nx, ny, nz" << std::endl;
+    //fs << "x, y, z, v, nx, ny, nz" << std::endl;
+    fs << "q0, q1, q2, q3, q4" << std::endl;
     for (unsigned int i = 0; i < v.getnDoF(); i++)
     {
         // TODO: handle dielectric regions where no LC material exists
@@ -38,7 +39,8 @@ void ResultIO::writeCsvUnstructured(const Coordinates &coordinates,
             q.getValue(i, 4)}
                      .toDirector();
         auto &p = coordinates.getPoint(i);
-        fs << p.x() << "," << p.y() << "," << p.z() << "," << v.getValue(i) << "," << n.nx() << "," << n.ny() << "," << n.nz() << std::endl;
+        // fs << p.x() << "," << p.y() << "," << p.z() << "," << v.getValue(i) << "," << n.nx() << "," << n.ny() << "," << n.nz() << std::endl;
+        fs << q.getValue(i, 0) << "," << q.getValue(i, 1) << "," << q.getValue(i, 2) << "," << q.getValue(i, 3) << "," << q.getValue(i, 4) << std::endl;
     }
 
     fs.close();

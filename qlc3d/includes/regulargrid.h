@@ -100,7 +100,7 @@ public:
     [[nodiscard]] std::vector<double> interpolateToRegular(const SolutionVector &pot) const;
     [[nodiscard]] std::vector<double> interpolateToRegularS(const std::vector<qlc3d::Director> &dir) const;
     [[nodiscard]] std::vector<vector<double>> interpolateToRegularQ(const SolutionVector &q) const;
-    [[nodiscard]] std::vector<qlc3d::Director> interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const;
+    [[nodiscard]] std::vector<qlc3d::Director> interpolateToRegularDirector(const SolutionVector &q) const;
     // ==============================================
     //
     // FILE OUTPUT FUNCTIONS
@@ -115,11 +115,13 @@ public:
                       const SolutionVector &elasticE,
                       const SolutionVector &thermoE,
                       const SolutionVector &electricE,
-                      const SolutionVector &totalE);
+                      const SolutionVector &totalE,
+                      const SolutionVector &q);
 
     bool writeVecMat(const std::filesystem::path &filename,
                      const SolutionVector &pot,
                      const std::vector<qlc3d::Director> &dir,
+                     const SolutionVector &q,
                      double time = 0);
 
     /**
@@ -131,12 +133,13 @@ public:
      */
     bool writeDirStackZ(const std::filesystem::path &filename,
                         const std::vector<qlc3d::Director> &dir,
+                        const SolutionVector &q,
                         double time = 0);
 
     // WRITE MATLAB FILES COMPATIBLE WITH NEMAKTIS 
 
     bool writeNemaktisDirector(const std::filesystem::path &filename,
-                               const std::vector<qlc3d::Director> &dir);
+                               const SolutionVector &q);
 
     bool writeNemaktisQtensor(const std::filesystem::path &filename,
                              const SolutionVector &q,

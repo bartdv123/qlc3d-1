@@ -20,7 +20,6 @@ namespace qlc3d {
         const double &nz() const { return nz_; }
         const double &S() const { return S_; }
         [[nodiscard]] Vec3 vector() const;
-
         Director static fromRadianAngles(const double &tiltRadians, const double &twistRadians, const double &S);
         Director static fromDegreeAngles(const double &tiltDegrees, const double &twistDegrees, const double &S);
 
@@ -54,6 +53,7 @@ namespace qlc3d {
         [[nodiscard]] const double &q4() const { return q4_; }
         [[nodiscard]] const double &q5() const { return q5_; }
     };
+    Director tensortovector(const QTensor &q);
 
     /*!
      * TTensor: traceless representation of Q-tensor, used in simulations instead of the Q-Tensor.

@@ -93,7 +93,7 @@ void eig2(int mv, int n, double *a, double *r) {
     }
 }
 
-Director tensortovector(const QTensor &q) {
+Director qlc3d::tensortovector(const QTensor &q) {
     const int n = 3;
     double A[6]; // upper diagonal of tensor
     double R[9]; // matrix that will contain 3 x eigenvectors
@@ -269,3 +269,4 @@ void DielectricPermittivity::set(double e11, double e22, double e33, double e12,
 }
 
 // </editor-fold>
+

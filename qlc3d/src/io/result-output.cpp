@@ -165,7 +165,8 @@ void RegularVTKFormatWriter::writeResult(const Geometry &geom, const SimulationS
                       *elasticE,
                       *thermoE,
                       *electricE,
-                      *totalE);
+                      *totalE,
+                      *qTensor);
 }
 //</editor-fold>
 
@@ -182,6 +183,7 @@ void RegularVecMatFormatWriter::writeResult(const Geometry &geom, const Simulati
   rGrid->writeVecMat(filePath.c_str(), // WRITE REGULAR GRID RESULT FILE
                      *potential,
                      *directors,
+                     *qTensor,
                      simulationState.currentTime().getTime());
 }
 //</editor-fold>
@@ -199,6 +201,7 @@ void DirStackZFormatWriter::writeResult(const Geometry &geom, const SimulationSt
   fs::path filePath = outputDirectory / filename;
   rGrid->writeDirStackZ(filePath.c_str(),
                         *directors,
+                        *qTensor,
                         simulationState.currentTime().getTime());
 }
 //</editor-fold>
@@ -232,7 +235,7 @@ void RegularNemaktisDirectorFormatWriter::writeResult(const Geometry &geom, cons
     RUNTIME_ERROR("RegularNemaktisDirector writer requires regular grid");
   }
   rGrid->writeNemaktisDirector(filePath.c_str(), // WRITE REGULAR GRID RESULT FILE
-                         *directors);
+                         *qTensor);
                          }
 }
 

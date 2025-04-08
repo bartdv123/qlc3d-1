@@ -242,56 +242,50 @@ double RegularGrid::interpolateNode(const double *valuesIn,
   }
 }
 
+
 void RegularGrid::interpolateDirNode(const double *vecin,
                                      double *dirout,
                                      const RegularGrid::lookup &L,
                                      const idx npLC) const
 {
-  // INTERPOLATE DIRECTOR TO A NODE TAKING INTO ACCOUNT HEAD-TAIL SYMMETRY.
-  // USE DIRECTOR OF FIRST NODE AS REFERENCE AND MAKE SURE DOT-PRODUCTS WITH
-  // OTHER 3 NODES IS POSITIVE
+// Use (0,1,0) as reference director for global alignment
+const double ref[3] = { 0.0, 1.0, 0.0 };
 
-  // LOCAL COPIES OF DIRECTOR AT 4 ELEMENT CORNER NODES
-  double n1[3] = {vecin[L.ind[0]], vecin[L.ind[0] + npLC], vecin[L.ind[0] + 2 * npLC]};
-  double n2[3] = {vecin[L.ind[1]], vecin[L.ind[1] + npLC], vecin[L.ind[1] + 2 * npLC]};
-  double n3[3] = {vecin[L.ind[2]], vecin[L.ind[2] + npLC], vecin[L.ind[2] + 2 * npLC]};
-  double n4[3] = {vecin[L.ind[3]], vecin[L.ind[3] + npLC], vecin[L.ind[3] + 2 * npLC]};
+// Load director components for the 4 corner nodes
+double n1[3] = { vecin[L.ind[0]], vecin[L.ind[0] + npLC], vecin[L.ind[0] + 2 * npLC] };
+double n2[3] = { vecin[L.ind[1]], vecin[L.ind[1] + npLC], vecin[L.ind[1] + 2 * npLC] };
+double n3[3] = { vecin[L.ind[2]], vecin[L.ind[2] + npLC], vecin[L.ind[2] + 2 * npLC] };
+double n4[3] = { vecin[L.ind[3]], vecin[L.ind[3] + npLC], vecin[L.ind[3] + 2 * npLC] };
 
-  // 3 DOT PRODUCTS WITH REFERENCE DIRECTOR
-  double dots[3] = {
-      n1[0] * n2[0] + n1[1] * n2[1] + n1[2] * n2[2],
-      n1[0] * n3[0] + n1[1] * n3[1] + n1[2] * n3[2],
-      n1[0] * n4[0] + n1[1] * n4[1] + n1[2] * n4[2]};
+// STEP 1: First align all directors with global reference
+auto alignWithReference = [&](double n[3]) {
+  double dot = n[1]; // Simplified since reference is (0,1,0)    
+  if (dot < 0) {
+    n[0] = -n[0]; n[1] = -n[1]; n[2] = -n[2];
+  }
+};
 
-  // REDUCE TO SIGN ONLY
-  dots[0] = dots[0] >= 0 ? 1.0 : -1.0;
-  dots[1] = dots[1] >= 0 ? 1.0 : -1.0;
-  dots[2] = dots[2] >= 0 ? 1.0 : -1.0;
+// Align all directors with global reference first
+alignWithReference(n1);
+alignWithReference(n2);
+alignWithReference(n3);
+alignWithReference(n4);
 
-  // MULTIPLY EACH DIRECTOR BY SIGN
-  n2[0] *= dots[0];
-  n2[1] *= dots[0];
-  n2[2] *= dots[0];
-  n3[0] *= dots[1];
-  n3[1] *= dots[1];
-  n3[2] *= dots[1];
-  n4[0] *= dots[2];
-  n4[1] *= dots[2];
-  n4[2] *= dots[2];
+// Compute weighted sum
+double sum[3] = { 
+  n1[0]*L.weight[0] + n2[0]*L.weight[1] + n3[0]*L.weight[2] + n4[0]*L.weight[3],
+  n1[1]*L.weight[0] + n2[1]*L.weight[1] + n3[1]*L.weight[2] + n4[1]*L.weight[3],
+  n1[2]*L.weight[0] + n2[2]*L.weight[1] + n3[2]*L.weight[2] + n4[2]*L.weight[3]
+};
 
-  // INTERPOLATE
-  dots[0] = n1[0] * L.weight[0] + n2[0] * L.weight[1] + n3[0] * L.weight[2] + n4[0] * L.weight[3]; // temp
-  dots[1] = n1[1] * L.weight[0] + n2[1] * L.weight[1] + n3[1] * L.weight[2] + n4[1] * L.weight[3];
-  dots[2] = n1[2] * L.weight[0] + n2[2] * L.weight[1] + n3[2] * L.weight[2] + n4[2] * L.weight[3];
+double norm = sqrt(sum[0]*sum[0] + sum[1]*sum[1] + sum[2]*sum[2]);
 
-  // MAINTAIN UNIT LENGTH OF DIRECTOR - NORMALISE IT
-  double len = dots[0] * dots[0] + dots[1] * dots[1] + dots[2] * dots[2];
-  len = sqrt(len);
-
-  dirout[0] = dots[0] / len;
-  dirout[1] = dots[1] / len;
-  dirout[2] = dots[2] / len;
+  // Normalize result
+  dirout[0] = sum[0]/norm;
+  dirout[1] = sum[1]/norm;
+  dirout[2] = sum[2]/norm;
 }
+
 
 void RegularGrid::interpolateToRegular(const double *valIn,
                                        double *&valOut,
@@ -383,41 +377,105 @@ std::vector<std::vector<double>> RegularGrid::interpolateToRegularQ(const Soluti
     return regQ;
 }
 
-std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const std::vector<qlc3d::Director> &dir) const
+
+// Computes the principal eigenvector (v) and eigenvalue (lambda) of a symmetric 3x3 matrix Q.
+// Assumes Q is traceless (I1 = 0). Returns true if successful.
+bool computePrincipalEigenvector(const double Q[3][3], double v[3], double &lambda)
 {
-  std::vector<qlc3d::Director> regDir;
-  const idx npLC = dir.size();
-    
-    // Create arrays for interpolateDirNode
-    double* vecin = new double[3 * npLC];
-    double dirout[3];
+    // For a traceless symmetric 3x3 matrix, I1 = trace(Q)=0.
+    // Invariants:
+    // I2 = Qxx*Qyy + Qxx*Qzz + Qyy*Qzz - (Qxy^2 + Qxz^2 + Qyz^2)
+    // I3 = det(Q)
+    double I2 = Q[0][0]*Q[1][1] + Q[0][0]*Q[2][2] + Q[1][1]*Q[2][2]
+              - (Q[0][1]*Q[0][1] + Q[0][2]*Q[0][2] + Q[1][2]*Q[1][2]);
+    double I3 = Q[0][0]*(Q[1][1]*Q[2][2] - Q[1][2]*Q[1][2])
+              - Q[0][1]*(Q[0][1]*Q[2][2] - Q[0][2]*Q[1][2])
+              + Q[0][2]*(Q[0][1]*Q[1][2] - Q[0][2]*Q[1][1]);
 
-    // Fill input array
-    for (idx i = 0; i < npLC; i++) {
-        vecin[i] = dir[i].nx();
-        vecin[i + npLC] = dir[i].ny();
-        vecin[i + 2*npLC] = dir[i].nz();
+    // When using the closed-form solution for cubic equations the principal eigenvalue is
+    //   lambda_max = 2*sqrt(-I2/3)*cos( theta/3 )
+    // where theta = arccos( (3*sqrt(3)*I3)/(2*(-I2/3)^(3/2) ) )
+    if (I2 >= 0) {
+        // Fall back if invariants are numerically degenerate.
+        return false;
     }
+    double sqrtTerm = std::sqrt(-I2/3.0);
+    double cosArg = (3.0*std::sqrt(3.0)*I3) / (2.0 * pow(sqrtTerm, 3));
+    // Clamp cosArg to [-1,1] to avoid numerical error.
+    if (cosArg > 1) cosArg = 1;
+    if (cosArg < -1) cosArg = -1;
+    double theta = std::acos(cosArg);
+    lambda = 2.0 * sqrtTerm * std::cos(theta/3.0);
 
-    // Process each lookup point
-    for (auto &l : lookupList) {
+    // Next, solve (Q - lambda I)*v = 0.
+    // We form two rows (e.g. row0 and row1) and take their cross-product.
+    double r0[3] = { Q[0][0] - lambda, Q[0][1], Q[0][2] };
+    double r1[3] = { Q[1][0], Q[1][1] - lambda, Q[1][2] };
+
+    // Cross product
+    v[0] = r0[1]*r1[2] - r0[2]*r1[1];
+    v[1] = r0[2]*r1[0] - r0[0]*r1[2];
+    v[2] = r0[0]*r1[1] - r0[1]*r1[0];
+    
+    double norm = sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
+    if (norm < 1e-10) {
+        // If rows were nearly dependent, try with row0 and row2.
+        double r2[3] = { Q[2][0], Q[2][1], Q[2][2] - lambda };
+        v[0] = r0[1]*r2[2] - r0[2]*r2[1];
+        v[1] = r0[2]*r2[0] - r0[0]*r2[2];
+        v[2] = r0[0]*r2[1] - r0[1]*r2[0];
+        norm = sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
+        if (norm < 1e-10)
+            return false;
+    }
+    
+    v[0] /= norm;
+    v[1] /= norm;
+    v[2] /= norm;
+    return true;
+}
+
+std::vector<qlc3d::Director> RegularGrid::interpolateToRegularDirector(const SolutionVector &q) const
+{
+
+  std::vector<qlc3d::Director> regDir;
+    const double rt2 = std::sqrt(2.0);
+    const double rt6 = std::sqrt(6.0);
+
+    // Get the interpolated T tensor values (5 components) on the regular grid.
+    std::vector<std::vector<double>> regT = interpolateToRegularQ(q);
+    // Total number of grid points
+    idx totalPoints = nx_ * ny_ * nz_;
+
+    for (idx i = 0; i < totalPoints; i++) {
+        const auto &l = lookupList[i];
         if (l.type == RegularGrid::NOT_LC || l.type == RegularGrid::NOT_FOUND) {
             regDir.push_back(qlc3d::Director({1, 0, 0}, std::numeric_limits<double>::quiet_NaN()));
         } else {
-            // Interpolate director
-            interpolateDirNode(vecin, dirout, l, npLC);
+            // Convert interpolated T components to Q components.
+            double q1 = -regT[0][i] / rt6 + regT[1][i] / rt2;
+            double q2 = -regT[0][i] / rt6 - regT[1][i] / rt2;
+            double q3 = regT[2][i] / rt2;
+            double q4 = regT[3][i] / rt2;
+            double q5 = regT[4][i] / rt2;
 
-            // Interpolate S parameter
-            double S = dir[l.ind[0]].S() * l.weight[0] +
-                      dir[l.ind[1]].S() * l.weight[1] +
-                      dir[l.ind[2]].S() * l.weight[2] +
-                      dir[l.ind[3]].S() * l.weight[3];
+            // Construct a QTensor from the computed Q components.
+            // (Assuming that qlc3d::QTensor has a constructor of the form QTensor(q1, q2, q3, q4, q5))
+            qlc3d::QTensor qt(q1, q2, q3, q4, q5);
 
-            regDir.push_back(qlc3d::Director({dirout[0], dirout[1], dirout[2]}, S));
+            // Convert the QTensor to a Director using your tensortovector function.
+            regDir.push_back( tensortovector(qt) );
         }
     }
 
-    delete[] vecin;
+    // Align all directors with reference n = {0, 1, 0}
+    const double ref[3] = { 0.0, 1.0, 0.0 };
+    for (auto &d : regDir) {
+        double dot = d.nx() * ref[0] + d.ny() * ref[1] + d.nz() * ref[2];
+        if (dot < 0) {
+            d = qlc3d::Director({ -d.nx(), -d.ny(), -d.nz() }, d.S());
+        }
+    }
     return regDir;
 }
 void RegularGrid::interpolateDirToRegular(const double *vecIn,
@@ -468,7 +526,8 @@ bool RegularGrid::writeVTKGrid(const std::filesystem::path &fileName,
                                const SolutionVector &elasticE,
                                const SolutionVector &thermoE,
                                const SolutionVector &electricE,
-                               const SolutionVector &totalE)
+                               const SolutionVector &totalE,
+                               const SolutionVector &q)
 {
 
   if (numRegularPoints_ == 0)
@@ -491,7 +550,7 @@ bool RegularGrid::writeVTKGrid(const std::filesystem::path &fileName,
   std::vector<double> regElectricE = interpolateToRegular(electricE);
   std::vector<double> regTotalE = interpolateToRegular(totalE);
   std::vector<double> regS = interpolateToRegularS(dir);
-  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(q);
 
   idx num_points[3] = {nx_, ny_, nz_};
   double grid_spacing[3] = {dx_, dy_, dz_};
@@ -523,6 +582,7 @@ bool RegularGrid::writeVTKGrid(const std::filesystem::path &fileName,
 bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
                               const SolutionVector &pot,
                               const std::vector<qlc3d::Director> &dir,
+                              const SolutionVector &q ,
                               const double time)
 {
   // WRITES OUTPUT IN A MATLAB FILE.
@@ -540,7 +600,7 @@ bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
 
   std::vector<double> regPot = interpolateToRegular(pot);
   std::vector<double> regS = interpolateToRegularS(dir);
-  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(q);
 
   std::vector<double> nx, ny, nz;
   nx.resize(regS.size(), 0);
@@ -569,6 +629,7 @@ bool RegularGrid::writeVecMat(const std::filesystem::path &fileName,
 
 bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
                                  const std::vector<qlc3d::Director> &dir,
+                                 const SolutionVector &q,
                                  double time)
 {
   std::ofstream fid(fileName);
@@ -580,7 +641,7 @@ bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
   // First line is grid size
   fid << nx_ << ',' << ny_ << ',' << nz_ << ',' << time << std::endl;
 
-  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(q);
 
   for (idx y = 0; y < ny_; y++)
   {
@@ -612,7 +673,7 @@ bool RegularGrid::writeDirStackZ(const std::filesystem::path &fileName,
 }
 
 bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
-                                        const std::vector<qlc3d::Director> &dir)
+                                        const SolutionVector &q)
 
 {
   std::ofstream fid(fileName);
@@ -631,7 +692,7 @@ bool RegularGrid::writeNemaktisDirector(const std::filesystem::path &fileName,
   fid << Lx << ',' << Ly << ',' << Lz << std::endl;
 
   // Grab the regular grid director values
-  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(dir);
+  std::vector<qlc3d::Director> regN = interpolateToRegularDirector(q);
 
   // Write the director values
   for (idx z = 0; z < nz_; z++)
